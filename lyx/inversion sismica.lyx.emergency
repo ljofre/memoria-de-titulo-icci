@@ -1,0 +1,190 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Estimación de una fuente sismica, aplicado a microsismos en minería
+\end_layout
+
+\begin_layout Standard
+Resumen
+\end_layout
+
+\begin_layout Standard
+Dado un conjunto de sismogramas se estima la fuente sismica puntual como
+ una fuerza 
+\begin_inset Formula $\mathbf{F}\left(\mathbf{x}_{0},t\right)$
+\end_inset
+
+ reutilizando la inversión que desarrollamos con Matias Courdurier, además
+ de ello, pretendo estimar la fuente sismica sobre todo un volumen en la
+ vecindad de la estimación inicla 
+\begin_inset Formula $\mathbf{x}_{0}$
+\end_inset
+
+ dada por los documentos de los geófonos para de esta manera reestimar la
+ posición del epicentro.
+ Por último estimar 
+\begin_inset Formula $\mbox{F}(t)$
+\end_inset
+
+ sobre un volumen 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, para ello pretendo calcular de forma independiente 
+\begin_inset Formula $\mathbf{F}\left(\mathbf{x}_{i},t\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $\mathbf{x}_{i}\in\Sigma$
+\end_inset
+
+ y luego representar 
+\begin_inset Formula $\mbox{F}(t)=\sum_{i}\alpha_{i}\mathbf{F}\left(\mathbf{x}_{i},t\right)$
+\end_inset
+
+ en donde 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ son escalares que minicen el error de estimación de la fuente.
+ Como el cálculo de los 
+\begin_inset Formula $\mathbf{F}\left(\mathbf{x}_{i},t\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ pueden llegar a ser muy costoso computacionalmente, pretendo reimplementar
+ los algoritmos bajo conceptos de computación paralela, específicamente
+ en 
+\series bold
+mpi4py
+\series default
+ la cual es una implementación en python de MPI.
+ Al mismo tiempo sería posible para cada sismograma su descomposición como
+ la suma de su onda 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $S$
+\end_inset
+
+ y de campo cercano.
+\end_layout
+
+\begin_layout Standard
+*Marco teórico
+\end_layout
+
+\begin_layout Standard
+**Ecuación elastica
+\end_layout
+
+\begin_layout Standard
+**Función de Green
+\end_layout
+
+\begin_layout Standard
+Sismogramas
+\end_layout
+
+\begin_layout Standard
+Algoritmo de inversión para un epicentro puntual (deconvolución)
+\end_layout
+
+\begin_layout Standard
+Algoritmo de inversión para un opicentro volumétrico.
+\end_layout
+
+\begin_layout Standard
+resultados
+\end_layout
+
+\begin_layout Standard
+estimación de la fuente sismica como un campo vectorial sobre un volumen
+\end_layout
+
+\begin_layout Standard
+Descomposición de la onda P y onda S de un sismograma
+\end_layout
+
+\begin_layout Standard
+conclusiones
+\end_layout
+
+\begin_layout Standard
+bibliografía
+\end_layout
+
+\end_body
+\end_document

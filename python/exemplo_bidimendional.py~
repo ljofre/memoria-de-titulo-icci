@@ -1,0 +1,44 @@
+"""
+Reconstrucción de una circunferencia que genera un campo gravitacional
+"""
+
+
+import numpy as np
+import triangle
+from scipy.constants import G
+import matplotlib.pyplot as plt
+import triangle.plot as plot
+
+
+# definimos la naturaleza del campo escalar
+def F(x, y):
+    return G / (np.sqrt(x ** 2 + y ** 2))
+
+# generamos n puntos en el plano con distintos valores positivos
+n = 10
+
+p = [(np.random.uniform() + 1, np.random.uniform() + 1) for _ in range(n)]
+
+# buscamos que todos estos puntos estén a una distancia superior de 1 al origen
+
+psi = [F(*i) for i in p]
+
+# generamos un cuadrado de centrado en el origen, para eso usaremos la
+# librería triangle
+
+ax = plt.axes()
+info = {}
+info['segments'] = np.array([[0, 1], [1, 2], [2, 3], [3, 0]], dtype=int)
+info['vertices'] = np.array([[1, 1], [1, -1], [-1, -1], [-1, 1]])
+
+t = triangle.triangulate(info, 'q')
+plot.plot(ax, **t)
+plt.show()
+
+# dado estos objetos se pueden identificar los bordes y sus vecinos, estos
+# son los segmentos se deben iterarse hasta converger a la forma que
+# minimiza el funcional
+
+# seleccionamos de la triangulacion solo nos nodos que componen la
+# frontera del dominio, asi, mediante un metodo numerico se iteran las
+# coordenadas nodales que hasta que el funcional converja a un minimo.

@@ -1,0 +1,163 @@
+
+\section{Planteamiento del problema}
+
+Sea $p \in \mathbb{R}^3$ una particula que genera un campo escalar en
+la coordenada $x$ de la forma $F(x-u)$ donde $u$ son las coordenadas de $p$.
+
+Si consideramos un volumen $V$ compuesta por la superposición de estas
+partículas, el campo escalar generado por este volumen estará
+determinado por la siguiente integral: $$\psi(x)=\int_V
+\rho(u)F(x-u)dV$$ donde $\rho$ es una función que determina la
+densidad del campo las coordenada $u$.
+
+El cálculo del campo escalar $\psi$ en todo el medio es trivial, dado
+que es una integral sobre un volumen ya conocido y el cálculo desde un
+punto de vista computacional y matemático carece de atractivo para la
+mayoría de los casos.
+
+Podríamos decir entonces que el volumen $V$ es la causa del campo
+escalar $\psi$ y este campo se puede obtene conociendo $F$ y $\rho$
+
+Por otro lado, los problemas de ingeniería en los cuales se desea
+estimar las causas de un fenómeno siempre tiene una cantidad limitada
+de información, y que además pueden contener errores.Si se conocen
+para un conjunto finito de puntos en el espacio $(x_i,\psi(x_i))$ los
+campos escalares producidos se desea recuperar la forma del volumen
+$V$ que genera esos campos específicamente.
+
+\section{Problema computacional}
+
+El problema es escencialmente numérico y por lo tanto
+computacional. Al ser un problema no resoluble analíticamente en su
+forma más general, abre la pósibilidad del uso de técnicas numéricos y
+las estructuras de datos que la hacen atractiva desde un punto de
+vista algorítmico.
+
+desconosido que se desea estimar, entonces el problema es diferente y
+puede llegar a ser no trivial. La solución puede no existir, de
+existir puede ser no única y de ser única puede no ser estable. Para
+demostrar la existencia, unicidad y estabilidad de la solución son
+partes del desafio de la tesis.
+
+Este tipo de problemas son denominados problemas inversos los cuales
+muchos de ellos pueden ser denominados como problemas inversos mal
+puestos y que requieren de técnicas de regularización y agregar.
+Determinar si es un problema paralelizable, el tratamiento en terminos
+computacionales y cuales son las estructuras de datos necesarias para
+manipular correcta y/o eficientemente el problema no son cuestiones de
+respuesta inmediata. En la medida que la investigación vaya
+evolucionando irán apareciendo problemas que van a ser resueltos
+primero con un prototipo suboptimo y luego su implementación definitiva.
+
+Estas preguntas no son de respuesta inmediata y dependen del problema
+que se esté tratando, pero está a la vista que la abundancia de
+hardware permite reflexionar sobre las posibilidades de optimización
+del problema en la media que ya se tenga una solucón subóptima, por
+esta razón considerará en la medida que se deba de optimizar la
+solución existente.
+
+\section{Propuesta de solución}
+
+Para este se hay que recuperar la frontera como incognita que produce
+esos vectores conocidos, para ello se usará una estructura de datos de
+malla generada mediante una triangulación de Delaunay en la cual
+mediante un método numérico de Newton-Raphson se iterará cada nodo de
+la frontera hasta converger a la solución buscada.
+
+Se propone una solución mediante un método numérico que toma una malla
+inicial $\Omega$ que representa el volumen del sólido y que
+iterativamente converja a una malla que busca minimizar la siguiente
+integral.
+
+$$I(\Omega) = \sum_i(\psi(x_i) - \int_\Omega F(x_i-u)dV)^2$$
+
+Consideremos que existe una función $G:\mathbb{R}^2\to \mathbb{R}$ que
+cumple siguiente propiedad
+
+$$\nabla \cdot G(u) =F(x_i-u)$$
+
+entonces, gracias al teorema de la divergencia:
+
+$$I(\Omega) = \sum_i(\psi(x_i) - \int_{\partial \Omega} \vec{G} \cdot \vec{n} dS)^2$$ donde $\vec{n}$ es el vector
+normal a la superficie volumen buscado.
+
+\subsection{Modelo discretizado}
+Dado que el minimizador de $I$ no se puede obtener de forma analítica
+en su forma más general se hará uso de un método numérico
+para encontrar las coordenadas nodales para la discretización de la
+frontera $\Omega$.
+
+Si consideramos $\tilde \Omega$ una discretización tetrahedrizada del
+dominio original $\Omega$ donde se cumple la siguientes propiedades:
+
+$$\bigcup_{T_i \in \tilde{\Omega}} T_i =  \tilde{\Omega}$$
+como es natural y que además que cada una de sus componentes sean
+disyuntas, esto quiere decir que 
+
+$$\bigcap_{T_i \in \tilde{\Omega}} T_i = \varnothing$$
+
+por lo que la integral queda definida de la siguiente forma 
+
+$$I(\Omega) = \sum_i(\psi(x_i) - \sum_{u_j \in \partial \tilde
+  \Omega}\vec{G}_k \cdot\vec{n}_k \Delta
+S_k)^2$$
+
+En donde $u_j \in \partial \tilde \Omega$ significa que la suma se
+hace sobre todos los nodos de la frontera del volumen buscado y
+$\Delta S_k$ corresponde a un area asocidada que se puede ontener
+mediante la siguiente formula.
+
+$$\Delta S_k = \sum Poli_k$$ en donde $\sum_k Poli_k$ es el area de la
+superficie generada por el polígono formado por todos los centroides
+de cada uno de los triangulos que contienen a $u_k$ dado el mallado
+específico. Para esta cuenta se puede usar el ortocentro, el
+baricentro o el incentro siendo los tres buenas aproximaciones, se
+seleccionará entonces la que hagan que el cálculo sea más simple.
+
+Una caracteristica de esta medida es que se debe cumplir que
+
+$$\lim_{N\to\infty} \sum \Delta S_k = \oint dS = A $$ en donde $A$ es el
+area de la superficie para el caso continuo.
+
+
+
+\subsection{Rediscretización}
+En la medida que la frontera de discretizada de $\Omega$ vaya
+actualizandose hasta converger en el minimizador de $I$ entonces la
+calidad de la triangulación de la frontera va disminuyendo por lo que
+es necesario rediscretizar el dominio para conservar las propiedades
+óptimas dadas por la triangulación de Delaunay.
+
+\subsection{Restricciones y regularización}
+Al ser un problema del tipo inverso que admite una inestabilidad
+natural, dado que los datos son por mucho inferiores a los grados de
+libertad que se desean estimar, nos vemos en la necesidad de agregar
+restricciones que hagan robustecer los resultados y aumentar la
+velocidad de convergencia. Además se buscará usar conocimiento a
+priori que sirva como restricción: Un ejemplo es que es conocida el
+area de la superficie o el volumen las cuales serían restricciones de
+igualdad y la segunda es que el volumen debe respetar ciertas cotas
+superiores o inferiores las cuales son  restricciones de
+desigualdad. Para manejar ese tiempo de restricciones se hará uso del
+teorema de karush Khun Tacker que es una generalización de los
+multiplicadores de Lagrange para este objetivo.
+
+\subsection{Método de Newton-Raphson paralelo}
+Finalmente, después de todo el procedimiento anterior se buscará la
+solución en paralelo del método numérico para encontrar la solución,
+para esto se usará la librería Petsc dado que para el método de
+Newton-Raphson se requiere calcular numéricamente la inversa del
+jacobiando, que es en si una matriz dispersa, esta biblioteca tiene
+como objetivo ese tipo específico de problemas.
+
+\section{Aplicaciones}
+
+El problema que se trata de solucionar es el caso más general de la
+busqueda de un medio que genera un campo escalar. Si el campo está
+asociado al gravitacional entonces se trataría de un problema de
+gravimetría en donde las diferencias de gravedad entre dos instantes
+representan el campo gravitacional producido por un volumen
+desprendido en una caverna, por otro lado, si el campo es un campo
+magnético entonces se trata de un problema de magnetometría, en donde
+un mineral con una densidad $\rho$ genera alteraciones el un campo
+magnético, ambas técnicas requeridas en minería.

@@ -1,0 +1,26 @@
+
+\section{Newton-Raphson paralelo}
+
+En el presente capítulo considerar el método de Newton-Raphson la
+resolución en paralelo
+
+
+Consideremos el siguiente algoritmo de newton rapshon vectorial: dada
+una condición inicial $x_0$ y una función a minimizar $F$ se tiene
+entonces que el minimizador de $F$ se obtiene mediante el siguiente
+método iterativo.
+
+$$X_{n+1}=X_{n}-J^{-1}(X_n)F(X_n)}$$ en donde $J$ es generalmente una
+matriz dispersa que representa al jacobiano de $F$
+
+La forma paralela de resolverlo es mediante una forma en que se
+solucione el siguiente sistema
+
+$$J(X_n)Y_n = F(X_n)$$
+
+para regularizar la solución buscamos el vector $Y_n$ que minimize el
+funcional en términos de $\mu$
+
+
+$$\Phi_\mu(Y_n,F(X_n)) = \| Af-g\|^2 + \mu \| f\|^2$$
+

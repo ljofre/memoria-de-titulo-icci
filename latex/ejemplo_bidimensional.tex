@@ -1,0 +1,39 @@
+
+\section{Ejemplo bidimensional}
+
+Consideremos la curva cerrada simple $C$ en el plano XY que encierra a
+un área $\Omega$ y $F(x,y)=\frac{y}{\left(x^2+y^2\right)^{\frac{3}{2}}}$ un campo escalar
+genereado por una unidad diferencial $dA$ entonces el campo escalar en el
+punto $(x,y)$ generado por la totalidad del área encerrada por la
+curva cerrada simple $C$ es
+$$\psi(x,y) = \int_\Omega F(u-x,v-y)dudv$$
+
+$$\psi(x,y) = \int_\Omega \frac{1}{(x-u)^2+(y-v)^2}dudv$$
+
+
+Aplicando el teorema de Green
+$$\psi(x,y) = \int_{\partial \Omega} Pdu+Qdv$$
+
+en donde se cumple que
+$\frac{\partial Q}{\partial u}-\frac{\partial P}{\partial
+  v}=\frac{1}{(x-u)^2+(y-v)^2}$. Si
+  consideramos que $P$ es constante en términos de $v$ entonces
+  $\frac{\partial P}{\partial v}=0$, luego:
+
+$$\frac{\partial Q}{\partial u}=\frac{1}{(u-x)^2+(v-y)^2}$$
+luego $Q(u,v)=\int \frac{1}{(u-x)^2+(v-y)^2}du+h(v) $
+
+Como $C$ es una curva cerrada simple, entonces $\int h(v)dv=0$,
+finalmente, el campo escalar en todo queda definido en todo el espacio
+como la siguiente función.
+
+$$\psi(x,y)=\oint_{\partial \Omega} Q(u-x,v-y)dv$$
+
+Si discretizamos la integral
+$$\tilde \psi(x,y)=\sum_i Q(u_i-x,v_i-y)(v_{i}-v_{i-1})$$
+
+	finalmente, se desean buscar nodos \nodes  que minimice el
+error cuadrático
+
+$$I(\Omega) = \sum_k ( \psi_k -\tilde \psi(x_k,y_k))^2$$
+Se puede demostrar que es equivalente a buscar los nodos 

@@ -1,0 +1,198 @@
+\documentclass[a4paper,12pt,openany,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage[left=5cm,right=2cm,top=4cm,bottom=4cm,paperwidth=216mm,paperheight=330mm,pdftex]{geometry}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{dsfont}
+
+ \renewcommand{\thechapter}{\arabic{chapter}} 
+ \titleformat{\chapter}[display] 
+ {\bfseries\Large} 
+ {\filleft\MakeUppercase{\chaptertitlename} \Huge\thechapter} 
+ {4ex} 
+ {\titlerule 
+ \vspace{2ex}% 
+ \filright} 
+ [\vspace{2ex}% 
+ \titlerule]
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+
+\doublespacing
+
+\decimalpoint
+
+\floatstyle{boxed}
+\newfloat{codigo}{thp}{lop}
+\floatname{codigo}{Caja de Código}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\frontmatter
+
+\thispagestyle{empty}
+
+\begin{center}
+\textbf{UNIVERSIDAD TECNOLÓGICA METROPOLITANA\\
+ESCUELA DE INFORMÁTICA\\}
+\vspace{2cm}
+RUIDO Y TEXTURAS PROCEDURALES EN TIEMPO REAL.\\
+\vspace{2cm}
+\end{center}
+
+\begin{flushright}
+\parbox[r]{8cm}{TRABAJO DE TÍTULO PARA OPTAR AL\\ TÍTULO DE INGENÍERO CIVIL EN COMPUTACIÓN\\ MENCIÓN INFORMÁTICA.}
+\end{flushright}
+\vspace{2cm}
+\begin{flushright}
+PROFESOR GUÍA: Héctor Pincheira Conejeros.\\
+\vspace{1cm}
+Matías Alejandro Valdenegro Toro.
+\end{flushright}
+\vspace{6cm}
+\begin{center}
+SANTIAGO - 2009
+\end{center}
+
+\newpage
+
+\begin{flushright}
+
+\vspace*{20 mm}
+
+Nota: \line(1, 0){140} \\
+
+\vspace*{30 mm}
+
+\line(1, 0){180}\\
+Firma y Timbre\\
+Autoridad Responsable
+\end{flushright}
+
+%\chapter*{}
+
+%\begin{flushright}
+%\textit{The only thing necessary for evil to triumph is that good men to do nothing.\\}
+%\textit{Lo unico necesario para el triunfo del mal, es que los hombres buenos hagan nada.\\}
+%Edmund Burke
+
+%\bigskip 
+
+%\textit{You did not bear the shame\\}
+%\textit{You resisted\\}
+%\textit{Sacrificing your life\\}
+%\textit{For freedom, justice and honor.\\}
+%Memorial a la Resistencia Alemana, Berlin.
+
+%\end{flushright}
+
+\chapter*{Resumen}
+
+\thispagestyle{empty}
+
+Resumen.
+
+\chapter*{Abstract}
+
+\thispagestyle{empty}
+
+Abstract.
+
+\chapter*{Agradecimientos}
+
+\thispagestyle{empty}
+
+Agradecimientos.
+
+\addtocontents{toc}{\protect\thispagestyle{fancy}}
+
+\tableofcontents
+
+\addtocontents{lof}{\protect\thispagestyle{fancy}}
+
+\listoffigures
+
+\listof{codigo}{Lista de Cajas de Código}
+
+\include{introduccion}
+
+\mainmatter
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\rhead{\bfseries{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+\pagestyle{fancy}
+
+\lhead{\nouppercase{\bfseries{\rightmark}}}
+\rhead{\bfseries{\thepage}}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\chapter{Antecedentes Generales}
+
+\section{Motivación}
+
+Motivacion.
+
+\newpage
+
+\section{Objetivos Generales y Específicos}
+
+\subsection{Objetivos Generales}
+
+\textit{``Objetivo General.''}
+
+\subsection{Objetivos Específicos}
+
+\begin{enumerate}
+ \item Objetivo Especifico 1.
+ \item Objetivo Especifico 2.
+\end{enumerate}
+
+\section{Alcances y Limitaciones}
+
+Alcances y Limitaciones.
+
+\chapter{Estado del Arte}
+
+Estado del Arte.
+
+\chapter{Capitulo N}
+
+\chapter{Conclusiones y Trabajo Futuro}
+
+\bibliographystyle{these}
+%Usar bibliografia con bibtex.
+%\bibliography{biblio}
+
+\appendix
+\renewcommand{\appendixname}{Anexo}
+
+\chapter{Anexo N}
+
+\begin{codigo}[f]
+\begin{lstlisting}
+void foo()
+{
+}
+\end{lstlisting}
+\caption{Funcion foo}
+\label{fig:funcionFoo}
+\end{codigo}
+
+
+\end{document}

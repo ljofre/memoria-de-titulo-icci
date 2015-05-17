@@ -1,0 +1,506 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Algunos resultados previos
+\end_layout
+
+\begin_layout Subsection
+Sobre algunas propiedades de la superficie triangular
+\end_layout
+
+\begin_layout Standard
+Una superficie triangular se puede determinar en función de sus vértices
+ 
+\begin_inset Formula $\left(\mathbf{u},\mathbf{v},\mathbf{w}\right)$
+\end_inset
+
+, el vector normal se determina mediante 
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{n} & = & \frac{\left(\mathbf{u}-\mathbf{v}\right)\times\left(\mathbf{u}-\mathbf{w}\right)}{\left\Vert \left(\mathbf{u}-\mathbf{v}\right)\times\left(\mathbf{u}-\mathbf{w}\right)\right\Vert }\\
+ & = & \frac{\left(\begin{array}[t]{ccc}
+i & j & k\\
+u_{1}-v_{1} & u_{2}-v_{2} & u_{3}-v_{2}\\
+u_{1}-w_{1} & u_{2}-w_{2} & u_{3}-w_{2}
+\end{array}\right)}{\left\Vert \left(\mathbf{u}-\mathbf{v}\right)\times\left(\mathbf{u}-\mathbf{w}\right)\right\Vert }
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+de este vector nos es de interes la tercera componente para ...
+ operacionales
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+n_{3}=\frac{\left|\begin{array}[t]{cc}
+u_{1}-v_{1} & u_{2}-v_{2}\\
+u_{1}-w_{1} & u_{2}-w_{2}
+\end{array}\right|}{\left\Vert \left(\mathbf{u}-\mathbf{v}\right)\times\left(\mathbf{u}-\mathbf{w}\right)\right\Vert }
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+inversa del operador de divergencia de un campo escalar
+\end_layout
+
+\begin_layout Standard
+buscamos una inversa del operador divergencia 
+\begin_inset Formula $\mbox{div}^{-1}\left(F\right)=\left(0,0,-\frac{1}{\left\Vert \mbox{x}\right\Vert }\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Para 
+\lang spanish
+el
+\lang english
+ desarrollo y la busqueda del volumen existen algunos resultados previos
+ que van a ser necesarios
+\end_layout
+
+\begin_layout Standard
+Consideremos un volumen poliédrico cuyo campo generado es
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\psi\left(x_{0},y_{0},z_{0}\right)=\int_{V}F\left(x-x_{0},y-y_{0},z-z_{0}\right)dxdydx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+en donde 
+\begin_inset Formula 
+\[
+F\left(x,y,z\right)=\frac{z}{\left(x^{2}+y^{2}+z^{2}\right)^{\frac{3}{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+entonces, por el teorema de la divergencia entonces, con lo cual podemos
+ usar el operador inverso de divergencia
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi_{k}\left(\mathbf{x}_{j}\right)=\int_{S}\left(\nabla\cdot\right)^{-1}F\left(\mathbf{x}-\mathbf{x}_{j}\right)\cdot\mathbf{n}_{k}dS
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\left(\nabla\cdot\right)^{-1}$
+\end_inset
+
+ es la inversa del operador de divergencia, de esta manera es posible aplicar
+ el teorema de la divergencia en un forma inversa integrar solamente sobre
+ la frontera del dominio volumétrico y 
+\begin_inset Formula $S$
+\end_inset
+
+ es la superficie triangular conocidos los tres vértices 
+\begin_inset Formula $\left(\mathbf{u}_{k},\mathbf{v}_{k},\mathbf{w}_{k}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+planteamiento del problema
+\end_layout
+
+\begin_layout Standard
+como 
+\begin_inset Formula $\mathbf{x}=\left(x_{1},x_{2},x_{3}\right)$
+\end_inset
+
+ perteneciente a la superficie triangular conocidos los tres vértices 
+\begin_inset Formula $\left(\mathbf{u}_{k},\mathbf{v}_{k},\mathbf{w}_{k}\right)$
+\end_inset
+
+, y esta a su vez es un conjunto convexo, se puede describir un cambio de
+ variable en consecuencia a la combinación convexa 
+\begin_inset Formula $\mathbf{x}=\alpha\mathbf{u}_{k}+\beta\mathbf{v}_{k}+\left(1-\alpha-\beta\right)\mathbf{w}_{k}$
+\end_inset
+
+, cuyo jacobiano 
+\begin_inset Formula $J_{k}$
+\end_inset
+
+ se puede computar de la siguiente forma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $J_{k}=\det\begin{bmatrix}\\
+\\
+\\
+\end{bmatrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\psi_{k}\left(\mathbf{x}_{j}\right) & = & J_{k}\int_{0}^{1}\int_{0}^{1-\alpha}\left(\nabla\cdot\right)^{-1}F\left(\alpha\mathbf{u}_{k}+\beta\mathbf{v}_{k}+\left(1-\alpha-\beta\right)\mathbf{w}_{k}-\mathbf{x}_{j}\right)\cdot\mathbf{n}_{k}d\beta d\alpha\\
+\psi_{k}\left(\mathbf{x}_{j}\right) & = & J_{k}\int_{0}^{1}\int_{0}^{1-\alpha}\left(0,0,-\frac{1}{\left\Vert \alpha\mathbf{u}_{k}+\beta\mathbf{v}_{k}+\left(1-\alpha-\beta\right)\mathbf{w}_{k}-\mathbf{x}_{j}\right\Vert }\right)\cdot\mathbf{n}_{k}d\beta d\alpha\\
+\psi_{k}\left(\mathbf{x}_{j}\right) & = & -J_{k}n_{3,k}\int_{0}^{1}\int_{0}^{1-\alpha}\frac{1}{\left\Vert \alpha\mathbf{u}_{k}+\beta\mathbf{v}_{k}+\left(1-\alpha-\beta\right)\mathbf{w}_{k}-\mathbf{x}_{j}\right\Vert }d\beta d\alpha\\
+\psi_{k}\left(\mathbf{x}_{j}\right) & = & -J_{k}n_{3,k}\int_{0}^{1}\int_{0}^{1-\alpha}\frac{1}{\left\Vert \alpha\left(\mathbf{u}_{k}-\mathbf{w}_{k}\right)+\beta\left(\mathbf{v}_{k}-\mathbf{w}_{k}\right)+\mathbf{w}_{k}-\mathbf{x}_{j}\right\Vert }d\beta d\alpha\\
+ & = & -J_{k}n_{3,k}\int_{0}^{1}\int_{0}^{1-\alpha}\frac{1}{\left\Vert \alpha\mathbf{U}_{k}+\beta\mathbf{V}_{k}+\mathbf{W}_{k}\right\Vert }d\beta d\alpha
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+consideremos la integral siguiente integral
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int\frac{1}{\left\Vert \alpha\mathbf{U}+\beta\mathbf{V}+\mathbf{W}\right\Vert }d\beta=\frac{\log\left(2\alpha\mathbf{U}\mathbf{V}+2\beta\left\Vert \mathbf{U}-\mathbf{V}\right\Vert ^{2}\right)}{\left\Vert \mathbf{U}-\mathbf{V}\right\Vert }
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo que, calculando esta integral asociada a la 
+\begin_inset Formula $k$
+\end_inset
+
+-sima cara triangular de la discretización de superficie nos queda entonces
+ que
+\end_layout
+
+\begin_layout Standard
+luego, el campo escalar calculado en el punto 
+\begin_inset Formula $\mathbf{x}_{j}$
+\end_inset
+
+ está dado por 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\psi\left(\mathbf{x}_{j}\right)=\sum_{k}\psi_{k}\left(\mathbf{x}_{j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $\hat{\psi}\left(\mathbf{x}_{j}\right)$
+\end_inset
+
+ el campo medido en 
+\begin_inset Formula $\mathbf{x}_{j}$
+\end_inset
+
+ entonces, se busca 
+\begin_inset Formula $\left\{ \left(\mathbf{u}_{k},\mathbf{v}_{k},\mathbf{w}_{k}\right)\right\} _{k}$
+\end_inset
+
+ que minimicen la siguiente función
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L=\sum_{i}\left(\hat{\psi}\left(\mathbf{x}_{j}\right)-\psi\left(\mathbf{x}_{j}\right)\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Consideraciones respecto la discretización del dominio
+\end_layout
+
+\begin_layout Section
+Obtener 
+\lang spanish
+vertices
+\lang english
+ en caso bidimensional
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi\left(x_{0},y_{0}\right)=\int_{A}F\left(x-x_{0},y-y_{0}\right)dydx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+luego se busca minimizar entonces la siguiente función
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Gamma\left(u,v,w\right)=\left(\psi\left(x_{0},y_{0}\right)-\int_{A}F\left(x-x_{0},y-y_{0}\right)dydx\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Haciendo el cambio de variable necesario 
+\begin_inset Formula 
+\[
+\Gamma\left(u,v,w\right)=\left(\psi\left(x_{0},y_{0}\right)-\left|\frac{\partial\left(x,y\right)}{\partial\left(\alpha,\beta\right)}\right|\int_{0}^{1}\int_{0}^{1-\alpha}F\left(x\left(\alpha,\beta\right)-x_{0},y\left(\alpha,\beta\right)-y_{0}\right)d\beta d\alpha\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Cuadratura de Gauss
+\end_layout
+
+\begin_layout Standard
+Se usará cuandratura de Gauss para resolver el caso bidimensional más simple
+\end_layout
+
+\begin_layout Standard
+dado un punto 
+\begin_inset Formula $p=\left(x_{0},y_{0}\right)$
+\end_inset
+
+ y un triángulo con vértices 
+\begin_inset Formula $u,v,w$
+\end_inset
+
+, con un campo escalar 
+\begin_inset Formula $F\left(x,y\right)=\frac{y}{\left(x^{2}+y^{2}\right)^{\frac{3}{2}}}$
+\end_inset
+
+ entonces el campo generado 
+\end_layout
+
+\begin_layout Standard
+el campo en el punto 
+\begin_inset Formula $p$
+\end_inset
+
+ se calcula 
+\begin_inset Formula 
+\[
+\psi\left(x_{0},y_{0}\right)=\int_{A}F\left(x-x_{0},y-y_{0}\right)dydx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+como el area es 
+\begin_inset Formula $\left(x,y\right)=\alpha u+\beta v+\left(1-\alpha-\beta\right)w$
+\end_inset
+
+, entonces
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi\left(x_{0},y_{0}\right)=\left|\frac{\partial\left(x,y\right)}{\partial\left(\alpha,\beta\right)}\right|\int_{0}^{1}\int_{0}^{1-\alpha}F\left(x\left(\alpha,\beta\right)-x_{0},y\left(\alpha,\beta\right)-y_{0}\right)d\beta d\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+para aplicar cuadratura de Gauss se debe primero hacer las siguientes transforma
+ciones
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi\left(x_{0},y_{0}\right)=\left|\frac{\partial\left(x,y\right)}{\partial\left(\alpha,\beta\right)}\right|-\frac{1}{2}\int_{-1}^{1}\frac{\alpha-1}{2}\int_{-1}^{1}F\left(x\left(-\frac{1}{2}\alpha-\frac{1}{2},\frac{\alpha-1}{2}\beta+\frac{1-\alpha}{2}\right)-x_{0},y\left(-\frac{1}{2}\alpha-\frac{1}{2},\frac{\alpha-1}{2}\beta+\frac{1-\alpha}{2}\right)-y_{0}\right)d\beta d\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+luego, aproximando la integral queda entonces que
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi\left(x_{0},y_{0}\right)=-\frac{1}{2}\left|\frac{\partial\left(x,y\right)}{\partial\left(\alpha,\beta\right)}\right|\sum_{j=0}^{m}w_{j}\frac{\alpha_{j}-1}{2}\sum_{i=0}^{n}w_{i}F\left(x\left(-\frac{1}{2}\alpha_{j}-\frac{1}{2},\frac{\alpha_{j}-1}{2}\beta_{i}+\frac{1-\alpha_{j}}{2}\right)-x_{0},y\left(-\frac{1}{2}\alpha_{j}-\frac{1}{2},\frac{\alpha_{j}-1}{2}\beta_{i}+\frac{1-\alpha_{j}}{2}\right)-y_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Resultados previos
+\end_layout
+
+\begin_layout Standard
+Esta sección corresponde a algunos resultados previos con respecto al campo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F\left(x-x_{0},y-y_{0},z-z_{0}\right)=\frac{z-z_{0}}{\left(\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2}\right)^{\frac{3}{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+en donde 
+\begin_inset Formula $\left(x,y\right)=\alpha u+\beta v+\left(1-\alpha-\beta\right)w$
+\end_inset
+
+ por lo que se requiere calcular las siguientes nueve derivadas parciales
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial F}{\partial u_{1}}=\frac{\partial F}{\partial x}\frac{\partial x}{\partial u_{1}}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
