@@ -68,8 +68,8 @@
 
 \begin_body
 
-\begin_layout Standard
-Algunos resultados previos
+\begin_layout Title
+Cuadratura de Gauss para encontrar la frontera.
 \end_layout
 
 \begin_layout Subsection
@@ -493,6 +493,7 @@ en donde
 \end_inset
 
  por lo que se requiere calcular las siguientes nueve derivadas parciales
+ y con ello resolver el sistema de ecuaciones.
 \end_layout
 
 \begin_layout Standard
