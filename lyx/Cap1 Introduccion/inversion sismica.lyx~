@@ -336,8 +336,26 @@ La mecánica en medio continuo es una rama de la mecánica que se preocupa
  Este materías hipotético se denominará como medio continuo.
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Section
-Algunos teoremas básicos en elasticidad dinámica
+Algunos aspectos básicos de elasticidad
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mejorar la redacción, una buena guía es el libro de Knuth que está adjunto
+ en la bibliografía
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -345,6 +363,10 @@ La teoría de la elasticidad estudia la mecánica de los cuerpos sólidos,
  considerados bajo medios continuos, bajo la accion de fuerzas aplicadas
  estos cuerpos se deforman, esto quiere decir que cambian su forma y su
  volumen.
+\end_layout
+
+\begin_layout Subsection
+Estática
 \end_layout
 
 \begin_layout Standard
@@ -434,6 +456,19 @@ Trabajaremos en este capítulos en las coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+dibujar el triangulo rectángulo que relaciona estas variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 \delta\mathbf{x}+\delta\mathbf{u}=\mathbf{x}+\delta\mathbf{x}+\mathbf{u}\left(\mathbf{\mathbf{x}+\delta\mathbf{x}}\right)-\left(\mathbf{x}+\mathbf{u}\left(\mathbf{x}\right)\right)
@@ -462,7 +497,26 @@ Si
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Standard
+En notación no tensorial
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\delta\mathbf{u} & = & \left(\delta\mathbf{x}\cdot\nabla\right)\mathbf{u}\\
+ & = & \left(\left(\delta x_{1},\delta x_{2},\delta x_{3}\right)\cdot\nabla\right)\mathbf{u}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -477,10 +531,57 @@ Hacer la demostración por medio de serie de Taylor en los anexos
 
 \begin_layout Standard
 Esta ecuación puede ser reescrita de la forma 
-\begin_inset Formula $\delta u_{i}=\frac{1}{2}\left(u_{i,j}+u_{j,i}\right)\delta x_{j}+\frac{1}{2}\left(\mbox{curl}\mathbf{u}\times\delta\mathbf{x}\right)_{i}$
+\begin_inset Formula 
+\begin{equation}
+\delta u_{i}=\frac{1}{2}\left(u_{i,j}+u_{j,i}\right)\delta x_{j}+\frac{1}{2}\left(\mbox{curl}\mathbf{u}\times\delta\mathbf{x}\right)_{i}\label{eq:diffu}
+\end{equation}
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+y la rotación del cuerpo rígido es 
+\begin_inset Formula $\frac{1}{2}\mbox{curl}\mathbf{u}$
+\end_inset
+
+.
+ La interpretación del último término de 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:diffu"
+
+\end_inset
+
+ como la rotación de un cuerpo rígido es válida si 
+\begin_inset Formula $\left|u_{i,j}\right|\ll1$
+\end_inset
+
+ fuese no infinitesimal en el sentido de esta desigualdad, entonces deberíamos
+ en vez de analizar la contribución de 
+\begin_inset Formula $\delta\mathbf{u}$
+\end_inset
+
+ desde una rotación finíta - 
+\end_layout
+
+\begin_layout Standard
+Entenderemos tensión como la cantidad de fuerza por unidad de area y va
+ a depender del corte que se seleccione, las tensiones normales las vamos
+ a representar como 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ y las tesiones tangenciales como 
+\begin_inset Formula $\tau$
+\end_inset
+
+, pero las tensiones tangenciales van a tener dos subindices
+\end_layout
+
+\begin_layout Section
+Dinámica: La ecuación de onda elástica
 \end_layout
 
 \begin_layout Bibliography
@@ -501,6 +602,16 @@ key "key-2"
 \end_inset
 
 Landau: Teoría de la elasticidad
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Donald Knuth: Sobre la redacción de textos científicos
 \end_layout
 
 \begin_layout Subsection
@@ -579,6 +690,55 @@ Podemos considerar los siguientes aspectos que hacen que problema de inversión
 
 \begin_layout Chapter*
 Apendice I
+\end_layout
+
+\begin_layout Section
+Algunas demostraciones
+\end_layout
+
+\begin_layout Standard
+Demostrar que el diferencial del campo de desplazamiento está dado por
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta u_{i}=\frac{1}{2}\left(u_{i,j}+u_{j,i}\right)\delta x_{j}+\frac{1}{2}\left(\mbox{curl}\mathbf{u}\times\delta\mathbf{x}\right)_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Sea 
+\begin_inset Formula $\mathbf{u}\left(\mathbf{x}\right)$
+\end_inset
+
+ el campo de desplazamento, se cumple que la nueva posición de una partícula
+ que se encontraba en la posición 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ ahora es 
+\begin_inset Formula $\mathbf{x}+\mathbf{u}\left(\mathbf{x}\right)$
+\end_inset
+
+.
+ Para conocer la nueva posición de un punto en la vecindad de 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ entonces buscamos la nueva posición de 
+\begin_inset Formula $\mathbf{x}+\delta\mathbf{x}$
+\end_inset
+
+ la cual es 
+\begin_inset Formula $\mathbf{x}+\delta\mathbf{x}+\mathbf{u}\left(\mathbf{x}+\delta\mathbf{x}\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
