@@ -542,6 +542,14 @@ Esta ecuación puede ser reescrita de la forma
 \end_layout
 
 \begin_layout Standard
+Luego, el tensor de tensiones queda definido como 
+\begin_inset Formula $\sigma_{ij}=\frac{1}{2}\left(u_{i,j}+u_{j,i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 y la rotación del cuerpo rígido es 
 \begin_inset Formula $\frac{1}{2}\mbox{curl}\mathbf{u}$
 \end_inset
@@ -581,7 +589,24 @@ Entenderemos tensión como la cantidad de fuerza por unidad de area y va
 \end_layout
 
 \begin_layout Section
-Dinámica: La ecuación de onda elástica
+Introducción de la función de Green para elastodinámica
+\end_layout
+
+\begin_layout Standard
+La ecuación de desplazamiento para un medio isotrópico puede ser expresado
+ en términos de 
+\begin_inset Formula $\mathbf{u}\left(\mathbf{x},t\right)$
+\end_inset
+
+ puede expresarte en términos vectoriales de la forma 
+\begin_inset Formula 
+\[
+\rho\ddot{\mathbf{u}}=\mathbf{f}+\left(\lambda+2\mu\right)\nabla\left(\nabla\cdot\mathbf{u}\right)-\mu\nabla\times\left(\nabla\times\mathbf{u}\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -743,6 +768,33 @@ Sea
 
 \begin_layout Section
 Vectores y Tensores
+\end_layout
+
+\begin_layout Standard
+Usaremos en 
+\series bold
+negritas
+\series default
+ los símbolos que se refieren a un campo vectorial y un campo tensorial
+ y con subindices (e.j.
+ 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{kl}$
+\end_inset
+
+) para designar un componente vectorial o tensorial en el sistema de coordenadas
+ cartesiano.
+\end_layout
+
+\begin_layout Standard
+Jeffrey (1965)
+\end_layout
+
+\begin_layout Standard
+Jeffrey and Jeffrey (1972)
 \end_layout
 
 \end_body

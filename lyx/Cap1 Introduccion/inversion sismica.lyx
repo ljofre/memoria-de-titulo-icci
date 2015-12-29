@@ -589,7 +589,24 @@ Entenderemos tensión como la cantidad de fuerza por unidad de area y va
 \end_layout
 
 \begin_layout Section
-Dinámica: La ecuación de onda elástica
+Introducción de la función de Green para elastodinámica
+\end_layout
+
+\begin_layout Standard
+La ecuación de desplazamiento para un medio isotrópico puede ser expresado
+ en términos de 
+\begin_inset Formula $\mathbf{u}\left(\mathbf{x},t\right)$
+\end_inset
+
+ puede expresarte en términos vectoriales de la forma 
+\begin_inset Formula 
+\[
+\rho\ddot{\mathbf{u}}=\mathbf{f}+\left(\lambda+2\mu\right)\nabla\left(\nabla\cdot\mathbf{u}\right)-\mu\nabla\times\left(\nabla\times\mathbf{u}\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -692,8 +709,40 @@ Aspectos computacionales
 \end_layout
 
 \begin_layout Standard
-Podemos considerar los siguientes aspectos que hacen que problema de inversión
+Al considerar los siguientes aspectos que hacen que problema de inversión
  tenga un atractivo computacional
+\end_layout
+
+\begin_layout Standard
+modelo de datos
+\end_layout
+
+\begin_layout Standard
+entrada
+\end_layout
+
+\begin_layout Standard
+Algoritmos y estructura de datos
+\end_layout
+
+\begin_layout Standard
+paralelización
+\end_layout
+
+\begin_layout Standard
+Separación de la onda en sus componentes 
+\begin_inset Formula $S$
+\end_inset
+
+ , 
+\begin_inset Formula $P$
+\end_inset
+
+ y de campo cercano
+\end_layout
+
+\begin_layout Standard
+Visualización de los resultados
 \end_layout
 
 \begin_layout Chapter*
@@ -759,7 +808,25 @@ Usaremos en
 negritas
 \series default
  los símbolos que se refieren a un campo vectorial y un campo tensorial
+ y con subindices (e.j.
  
+\begin_inset Formula $u_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{kl}$
+\end_inset
+
+) para designar un componente vectorial o tensorial en el sistema de coordenadas
+ cartesiano.
+\end_layout
+
+\begin_layout Standard
+Jeffrey (1965)
+\end_layout
+
+\begin_layout Standard
+Jeffrey and Jeffrey (1972)
 \end_layout
 
 \end_body
