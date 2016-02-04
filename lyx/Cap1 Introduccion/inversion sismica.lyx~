@@ -709,8 +709,40 @@ Aspectos computacionales
 \end_layout
 
 \begin_layout Standard
-Podemos considerar los siguientes aspectos que hacen que problema de inversión
+Al considerar los siguientes aspectos que hacen que problema de inversión
  tenga un atractivo computacional
+\end_layout
+
+\begin_layout Standard
+modelo de datos
+\end_layout
+
+\begin_layout Standard
+entrada
+\end_layout
+
+\begin_layout Standard
+Algoritmos y estructura de datos
+\end_layout
+
+\begin_layout Standard
+paralelización
+\end_layout
+
+\begin_layout Standard
+Separación de la onda en sus componentes 
+\begin_inset Formula $S$
+\end_inset
+
+ , 
+\begin_inset Formula $P$
+\end_inset
+
+ y de campo cercano
+\end_layout
+
+\begin_layout Standard
+Visualización de los resultados
 \end_layout
 
 \begin_layout Chapter*
