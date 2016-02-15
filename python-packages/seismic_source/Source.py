@@ -5,16 +5,20 @@ from scipy.signal import detrend
 from numpy import ndarray, fliplr, append
 from numpy import reshape
 from numpy.linalg import eig
-from matplotlib.pylab import plot, show
 import re
 
 def Source(object):
     def __init__(self, event):
-        self.event = event
         
+        # sensor_id de los que son acelerometros
+        
+        acelerometers_id = [76, 82, 118, 126, 146, 147]
+        
+        self.event = event
+            
     def reconstruction(self):
         """Reconstruye los sismogramas dada la fuente estimda"""
-        G = GreenKernel(self.event.LocR, self.srcTime, self.event.alpha, self.event.beta, selft.event.rho)
+        G = GreenKernel(self.event.LocR, self.srcTime, self.event.alpha, self.event.beta, self.event.rho)
         dt = self.srcTime[1] - self.srcTime[0]
         
         x = (conv(G[0,0,:]))*dt
@@ -39,10 +43,7 @@ def Source(object):
         :param L: Largo de la ventana de tiempo de la fuente entimada
         :param por: fraccion de tiempo antes del tiempo estimado por Codelcoq
         '''
-    
-        # sensor_id de los que son acelerometros
-        acelerometers_id = [76, 82, 118, 126, 146, 147]
-    
+        
         srcTime = dateTime2Num(event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
      
         self.srcTime = srcTime
@@ -55,16 +56,6 @@ def Source(object):
     
         # agregar el campo de desplazamiento a el vector de respuesta
         for gs in event.seismograms:
-    
-            # si es acelerometro
-            if gs.sensor_id in acelerometers_id:
-                data = detrend(cumsum(detrend(cumsum(gs.data[
-                               :, 2:5], axis=1), axis=1), axis=1), axis=1)
-    
-            # si es velocimetro
-            else:
-                data = detrend(cumsum(gs.data[:, 2:5], axis=1), axis=1)
-    
             # se agregan todas las dimensiones que mantienen mediciones validas
             if gs.X_enabled == 1:
                 U = hstack((U, data[:, 0].T))
@@ -82,8 +73,7 @@ def Source(object):
     
             # la relacion dt*hsr > 1
             deltat = dt * hsr
-            if dt * hsr <= 1:
-                print 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
+            assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
     
             R = (G.x_coord - LocX,
                  G.y_coord - LocY,
@@ -362,12 +352,8 @@ def _rotate(data):
     covariance_matrix = cov(data[:, 1:4], rowvar=0)
     val, vec = eig(covariance_matrix)
 
-        # verificar que la matriz sea simetrica y que el cambio de base produzca
+    # verificar que la matriz sea simetrica y que el cambio de base produzca
     # covarianza cero entre las 3 se~nales retornar el cambio de dase
     rot = data.copy()
     rot[:, 1:4] = dot(data[:, 1:4], vec)
     return(rot, vec, val)
-
-
-def waveSeparation(src, timevector):
-    pass

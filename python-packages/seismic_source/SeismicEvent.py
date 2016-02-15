@@ -1,37 +1,31 @@
 from importEvent import *
-import numpy
+import numpy as np
+import pandas as pd
+import scipy.signal as sig
 import re
 from Source import dateTime2Num
 
 
 class evento(object):
-    '''
-    @summary: conjunto de atributos que representan un evento sismico, con todos
-    los atributos en los set de datos standar definidos en el los documentos de
-    Codelco
+
+    '''@summary: conjunto de atributos que representan un evento sismico,
+    con todos los atributos en los set de datos standar definidos en
+    el los documentos de Codelco
     
-    Este objeto carga los atributos dinamicamente por lo que es posible que si el
-    documento que carga esta modificado o es adulterado manualmente pueda obtener
-    resultados desconocidos.
-    
+    Este objeto carga los atributos dinamicamente por lo que es
+    posible que si el documento que carga esta modificado o es
+    adulterado manualmente pueda obtener resultados desconocidos.
+
     '''
-
-    def __init__(self, path):
-        # convertir el archivo a objeto python
-        self = self.doc2event(path)
-
-        # @warning: se requieren convertir las matrices y los atributos que
-        # tienen puntos a arrays y a atributos de estructuras respectivamenente
-
 
     def count(self):
         # retorna la cantidad de geofonos del evento
         return(self.seismograms.length())
 
     def doc2event(self, path):
-        '''
-        @precondition: El documento a leer debe tener datos correctos
+        '''@precondition: El documento a leer debe tener datos correctos
         :param path: Ruta en donde se encuentra el archivo a leer
+
         '''
 
         # Abrir archivo del evento
@@ -49,7 +43,7 @@ class evento(object):
         # extraer la tabla con todas las mediciones de los geosensores
         pattNameValue = '(\d+)[ ]+(\d+):[ ]+(.+E.+)[ ]+(.+E.+)[ ]+(.+E.+)'
         med = re.findall(pattNameValue, texto)
-        med = numpy.array(map(lambda x:map(float, x), med))
+        med = np.array(map(lambda x:map(float, x), med))
 
         # pasar las mediciones a una lista de mediciones correspondiente a cada
         # una de las mediciones de los geofonos
@@ -61,9 +55,10 @@ class evento(object):
         for j in range(Ng + 1):
             gssMedList.append(med[med[:, 0] == j * 1.0, :])
 
-        # agregamos al evento los atributos, el primer elemento de la tupla es el
-        # nom del atributo, y el segundo elemento es el val del atributo. De esta
-        # manera se agregan uno por uno los atributos a el objeto evento.
+        # agregamos al evento los atributos, el primer elemento de la
+        # tupla es el nom del atributo, y el segundo elemento es el
+        # val del atributo. De esta manera se agregan uno por uno los
+        # atributos a el objeto evento.
         func = lambda x: geosensor(gssMedList[x])
         gss = map(func, range(Ng + 1))
         flag = 0
@@ -76,7 +71,8 @@ class evento(object):
             elif flag == 1 :
                 setattr(gss[g], nom, str2Attrib(val))
 
-                if (atributos[index - 2 ][0] == 'sensor_id') & (nom == 'surface_station'):
+                if (atributos[index - 2 ][0] == 'sensor_id') & (nom ==
+                                                                'surface_station'):
                     g = g + 1
 
             if nom == 'best_location':
@@ -84,6 +80,35 @@ class evento(object):
 
         # agregar los geofonos al evento
         setattr(self, 'seismograms', gss)
+        
+    def __init__(self, path):
+        # convertir el archivo a objeto python
+        self.doc2event(path)
+        
+        # @warning: se requieren convertir las matrices y los atributos que
+        # tienen puntos a arrays y a atributos de estructuras respectivamenente
+
+        #convertimos todos los sismos a campos de desplazamiento
+        
+        acelerometers_id = [76, 82, 118, 126, 146, 147]
+        
+        
+        #transformar todo a campo de desplazamiento
+        for s in self.seismograms:
+            
+            #guardar los datos crudos para analisis posteriores
+            s.raw_data = s.data
+            # si es acelerometro
+            if s.sensor_id in acelerometers_id:
+                s.data = sig.detrend(np.cumsum(sig.detrend(np.cumsum(s.data[
+                               :,2:5], axis=1), axis=1), axis=1), axis=1)    
+            # si es velocimetro
+            else:
+                s.data = sig.detrend(np.cumsum(s.data[:, 2:5], axis=1), axis=1)
+            
+            timevector = s.timevector
+            s.data = pd.DataFrame(s.data, index = timevector)
+            s.raw_data = pd.DataFrame(s.raw_data[:,2:5], index = timevector)
 
 class geosensor(object):
     '''
@@ -93,19 +118,14 @@ class geosensor(object):
     def __init__(self, data):
         self.data = data
 
-    def plot(self , dim):
-        import matplotlib.pyplot as plt
-
-        plt.plot(self.data[:, dim + 2])
-        plt.show()
-
+    @property
     def timevector(self):
 
         tt = dateTime2Num(self.t_time)
         tp = self.TriggerPosition
         hsr = self.hardware_sampling_rate
-        L = int(self.data[-1, 1])
-        return(tt + (numpy.arange(L + 1) - tp) / hsr)
+        L = len(self.data) 
+        return tt + (np.arange(L) - tp) / hsr
 
 class seismicSource(object):
     ''' 
