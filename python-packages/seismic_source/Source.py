@@ -58,7 +58,11 @@ class Source(object):
     
         # agregar el campo de desplazamiento a el vector de respuesta
         for gs in event.seismograms:
+    
             # se agregan todas las dimensiones que mantienen mediciones validas
+            
+            data = gs.data.values
+            
             if gs.X_enabled == 1:
                 U = hstack((U, data[:, 0].T))
     
@@ -75,7 +79,7 @@ class Source(object):
     
             # la relacion dt*hsr > 1
             deltat = dt * hsr
-            assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
+            #assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
     
             R = (G.x_coord - LocX,
                  G.y_coord - LocY,
@@ -83,7 +87,7 @@ class Source(object):
                  )
     
             # funcion de green
-            t = G.timevector() - dateTime2Num(date=event.origin_time)
+            t = G.timevector - dateTime2Num(date=event.origin_time)
             alpha = G.P_velocity
             beta = G.S_velocity
             rho = G.RockDensity
