@@ -20,7 +20,7 @@ class evento(object):
 
     def count(self):
         # retorna la cantidad de geofonos del evento
-        return(self.seismograms.length())
+        return(len(self.seismograms))
 
     def doc2event(self, path):
         '''@precondition: El documento a leer debe tener datos correctos

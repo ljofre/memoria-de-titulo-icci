@@ -43,13 +43,11 @@ class Source(object):
         :param event: objeto del tipo event
         :param numpoints=100: numero de la discretizacion de la fuente estimada
         :param L: Largo de la ventana de tiempo de la fuente entimada
-        :param por: fraccion de tiempo antes del tiempo estimado por Codelcoq
+        :param por: fraccion de tiempo antes del tiempo estimado por Codelco
         '''
         
-        srcTime = dateTime2Num(event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
-     
-        self.srcTime = srcTime
-    
+        self.srcTime = dateTime2Num(event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
+        srcTime = self.srcTime
         dt = srcTime[1] - srcTime[0]
         """
             se requiere resolver un sistema lineal del tipo A*alphas = U
@@ -57,6 +55,7 @@ class Source(object):
         A, U = ([], [])
     
         # agregar el campo de desplazamiento a el vector de respuesta
+        # los id son los mismos!
         for gs in event.seismograms:
     
             # se agregan todas las dimensiones que mantienen mediciones validas
@@ -79,7 +78,7 @@ class Source(object):
     
             # la relacion dt*hsr > 1
             deltat = dt * hsr
-            #assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
+            assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
     
             R = (G.x_coord - LocX,
                  G.y_coord - LocY,
@@ -473,7 +472,8 @@ def dateTime2Num(date):
     seg = int(seg) * 1.0
     cen = int(cen) * 1.0
 
-    return(minute * 60 + seg + cen / 1000000)
+    return(seg + cen / 1000000)
+    #return(minute * 60 + seg + cen / 1000000)
 
 
 def _rotate(data):

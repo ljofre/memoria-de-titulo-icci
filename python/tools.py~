@@ -1,3 +1,0 @@
-
-def redefine_path(path):
-    """para el caso 2d se requiere redefinir un camino bidimensional"""
