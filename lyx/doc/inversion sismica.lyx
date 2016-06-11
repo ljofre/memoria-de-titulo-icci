@@ -77,33 +77,44 @@ theorems-ams-extended
 Algorimo numérico de estimación de sismica.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Chapter*
 Resumen
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection*
 Antecedentes
 \end_layout
 
 \begin_layout Standard
-En la minería actual se registran los eventos sísmicos producidos por las
- fallas geológicas en los macizos en el cual se encuentran las minas de
- explotación, la información de estas fallas son de importancia para de
- la toma de decisiones.
- Dos ...
- son la caracterización del sismo y su epicentro
+En minería ocurren sismisidad que es registrada por unos instrumentos llamados
+ geo-fonos.
+ Estos datos se usan para determinar la localización de las fuentes sísmicas.
+ Esto implica determinar las coordenadas del hipocentro como el tiempo de
+ origen.
 \end_layout
 
 \begin_layout Standard
-la toma de decisiones
+En la minería actual se registran constantemente eventos sísmicos, estos
+ son producidos por eventuales fracturas del macizo o el desplazamiento
+ de los planos geológicos uno sobre otro.
+ La información de estos eventos y la caracterización de estos sismos son
+ de importancia para conocer el estado físico del macizo mismo y así ser
+ un antecedente para la toma de decisiones operativas en el proceso de explotaci
+ón.
+ La sismología actual provee teoría suficiente para automatizar procesos
+ de estimación de epicentros y caracterizar los microsismos apoyada por
+ la teoría física de la elasticidad y algunos supuestos simplificadores.
 \end_layout
 
 \begin_layout Standard
-busqueda de discontinuidades
+Los instrumentos son geófonos que registran el campo de velocidad o el campo
+ de aceleración del evento sísmico en un punto del espacio y a partir de
+ estas mediciones se estiman ciertas características del sismo, como el
+ tiempo cuando ocurre y el lugar donde ocurre este.
 \end_layout
 
 \begin_layout Standard
-caracterizar estos sismos
+que son de discontinuidades en el medio
 \end_layout
 
 \begin_layout Standard
@@ -115,9 +126,19 @@ es un problema de big data
 \end_layout
 
 \begin_layout Standard
-La teoría geofísica a la cual la sismología pertenece provee teoría suficiente
- para automatizar procesos de estimación de epicentros y caracterizar los
- microsismos
+supuestos simplificadores, como la continuidad del medio, no acotado y de
+ densidad homogenera.
+\end_layout
+
+\begin_layout Standard
+A pesar de esto, no se ha desarrollado aun un método automatizado de estimación
+ de micro sismos, lo que implica que procesos manuales intervengan y, a
+ causa de esto, no aprovechar toda la sensibilidad de los instrumentos,
+ porque de así hacerlo, el volumen de información sería inmanejable para
+ estos.
+ La automatización de estos procesos no es simple, dado que la estimación
+ de estos sismos implican un costo computacional elevado para obtener las
+ incóginitas.
 \end_layout
 
 \begin_layout Standard
@@ -221,16 +242,15 @@ Introducción
 
 \begin_layout Standard
 Durante el proceso de explotación de la mina, los cambios mecanicos que
- va sufriendo el maciso rocoso producen eventos sismicos.
+ va sufriendo el maciso rocozo producen eventos sismicos.
  Estos eventos son registrados por una red de geosensores, y las medicones
- obtenidas por la red de geosensores se utilizan para estimar, entre otras
- cosas, la ubicación de la fuente sismica (epicentro) y el momento en que
- ocurrió el evento.
- El objetivo principal de este trabajo es utilizar las mediciones sisicas
+ obtenidas esta red se utilizan para estimar, entre otras cosas, la ubicación
+ de la fuente sismica (epicentro) y el momento en que ocurrió el evento.
+ El objetivo principal de este trabajo es utilizar las mediciones sismicas
  para ahondar en el estudio y caracterizacion de los eventos sismicos durante
- el rpocesos productivo de una mina.
+ el procesos productivo de una mina.
  Una caracterización adecuada de los eventos sismicos entrega informacion
- mecanica importante de los lufgares donde estos ocurren.
+ mecanica importante de los lugares donde estos ocurren.
 \end_layout
 
 \begin_layout Section
@@ -400,7 +420,7 @@ La mecánica en medio continuo es una rama de la mecánica que se preocupa
 \end_layout
 
 \begin_layout Section
-Algunos aspectos básicos de elasticidad
+Aspectos de la teoría de la elasticidad
 \end_layout
 
 \begin_layout Standard
@@ -610,7 +630,7 @@ Luego, el tensor de tensiones queda definido como
 
 \begin_layout Standard
 y la rotación del cuerpo rígido es 
-\begin_inset Formula $\frac{1}{2}\mbox{curl}\mathbf{u}$
+\begin_inset Formula $\frac{1}{2}\mbox{curl }\mathbf{u}$
 \end_inset
 
 .
@@ -644,7 +664,8 @@ Entenderemos tensión como la cantidad de fuerza por unidad de area y va
 \begin_inset Formula $\tau$
 \end_inset
 
-, pero las tensiones tangenciales van a tener dos subindices
+, pero las tensiones tangenciales van a tener dos subindices que representan
+ las dos direcciones ortogonales contenidas en el plano tangencial.
 \end_layout
 
 \begin_layout Section
@@ -930,7 +951,7 @@ Como las mediciones temporales son efectivamente discretas, lo anterior
  se puede escribir de la manera matricial como 
 \begin_inset Formula 
 \[
-\alpha=\arg\min_{\alpha}\left\Vert u-\alpha\cdot A\right\Vert ^{2}
+\hat{\alpha}=\arg\min_{\alpha}\left\Vert u-\alpha\cdot A\right\Vert ^{2}
 \]
 
 \end_inset
@@ -1018,7 +1039,7 @@ Inversión
 
 \begin_layout Standard
 Buscamos entre todos los posibles sismos el que minimice el la 
-\begin_inset Formula $L_{1}$
+\begin_inset Formula $L_{2}$
 \end_inset
 
  error de estimación
@@ -1052,49 +1073,16 @@ También, para algunos cálculos numéricos, específicamente para la estimació
  Green de la ecuación elastica
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\frac{\partial}{\partial x_{k}}G_{ij}\left(\mathbf{x},t\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Si consideremos la señal 
-\begin_inset Formula $s\left(t\right)$
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{eqnarray*}
-\vec{u}\left(r,t\right) & = & \left[G\left(\mathbf{x}-\mathbf{x}_{0},t\right)\ast\vec{s}\left(t\right)\right]\left(t\right)\\
-\mathcal{F}\left[\vec{u}\left(r,t\right)\right] & = & \mathcal{F}\left[G\left(\mathbf{x}-\mathbf{x}_{0},t\right)\right]\mathcal{F}\left[\vec{s}\right]\\
-\mathcal{F}\left[\vec{s}\right] & = & \frac{\mathcal{F}\left[\vec{u}\left(r_{k},t\right)\right]}{\mathcal{F}\left[G\left(\mathbf{x}-\mathbf{x}_{0},t\right)\right]}\\
-\vec{u}\left(r,t\right) & = & \frac{\frac{1}{4\pi\rho}\left(3\gamma_{i}\gamma_{j}-\delta_{ij}\right)}{r^{3}}t{}_{\left[\frac{r}{\alpha},\frac{r}{\beta}\right]}\ast\vec{s}\left(t\right)+\frac{\gamma_{i}\gamma_{j}}{4\pi\rho\alpha^{2}r}\vec{s}\left(t-\frac{r}{\alpha}\right)-\frac{\gamma_{i}\gamma_{j}-\delta_{ij}}{4\pi\rho\beta^{2}r}\vec{s}\left(t-\frac{r}{\beta}\right)
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Estimación del epicentro
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\phi=$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
-Aspectos computacionales
+Computación
+\end_layout
+
+\begin_layout Subsection
+Estructura de datos y algoritmos
+\end_layout
+
+\begin_layout Subsection
+Arquitectura
 \end_layout
 
 \begin_layout Subsubsection
@@ -1262,6 +1250,17 @@ key "key-1"
 \end_inset
 
 Donald Knuth: Sobre la redacción de textos científicos
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Penrose, Roger (1955).
+ «A generalized inverse for matrices»
 \end_layout
 
 \begin_layout Bibliography

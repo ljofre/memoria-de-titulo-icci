@@ -99,7 +99,7 @@ class evento(object):
             #guardar los datos crudos para analisis posteriores
             s.raw_data = s.data
             # si es acelerometro
-            if s.sensor_id in acelerometers_id:
+            if s.site_id in acelerometers_id:
                 s.data = sig.detrend(np.cumsum(sig.detrend(np.cumsum(s.data[
                                :,2:5], axis=1), axis=1), axis=1), axis=1)    
             # si es velocimetro

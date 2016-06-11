@@ -1,2 +1,6 @@
 .dropbox
 .DS_Store
+.spyderproject
+*.pyc
+IPython/.ipynb_checkpoints
+*.lyx~
