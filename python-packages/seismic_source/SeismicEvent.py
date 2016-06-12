@@ -1,6 +1,7 @@
 from importEvent import *
 import numpy as np
 import pandas as pd
+import matplotlib.pylab as plt
 import scipy.signal as sig
 import re
 from Source import dateTime2Num
@@ -101,14 +102,16 @@ class evento(object):
             # si es acelerometro
             if s.site_id in acelerometers_id:
                 s.data = sig.detrend(np.cumsum(sig.detrend(np.cumsum(s.data[
-                               :,2:5], axis=1), axis=1), axis=1), axis=1)    
+                               :,2:5], axis=0), axis=0), axis=0), axis=0)    
             # si es velocimetro
             else:
-                s.data = sig.detrend(np.cumsum(s.data[:, 2:5], axis=1), axis=1)
+                s.data = sig.detrend(np.cumsum(s.data[:, 2:5], axis=0), axis=0)
             
             timevector = s.timevector
             s.data = pd.DataFrame(s.data, index = timevector)
             s.raw_data = pd.DataFrame(s.raw_data[:,2:5], index = timevector)
+            
+        pass
 
 class geosensor(object):
     '''

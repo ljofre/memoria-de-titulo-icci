@@ -23,10 +23,10 @@ class Source(object):
         G = GreenKernel(self.event.LocR, self.srcTime, self.event.alpha, self.event.beta, self.event.rho)
         dt = self.srcTime[1] - self.srcTime[0]
         
-        x = (conv(G[0,0,:]))*dt
+        #x = (conv(G[0,0,:]))*dt
         
 
-    def source(self, numpoints=100, L=0.05, por=0.3, LocR=''):
+    def source(self, numpoints=100, L=0.5, por=0.09, LocR=''):
         event = self.event
         # precondiciones
         assert(por > 0 and por < 1)
