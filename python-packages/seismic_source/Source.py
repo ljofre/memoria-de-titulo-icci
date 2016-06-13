@@ -26,14 +26,17 @@ class Source(object):
         #x = (conv(G[0,0,:]))*dt
         
 
-    def source(self, numpoints=100, L=0.5, por=0.0, LocR=''):
+    def source(self, numpoints=100, L=0.5, por=0.0, LocR=None):
         event = self.event
         # precondiciones
-        assert(0 <= por <= 1)
+
+        assert(0 <= por)
+        
         assert(L > 0)
+        
         assert(numpoints == int(numpoints))
     
-        if(LocR == ''):
+        if(LocR == None):
             LocX, LocY, LocZ = (event.LocX, event.LocY, event.LocZ)
         else:
             LocX, LocY, LocZ = LocR
@@ -47,8 +50,8 @@ class Source(object):
         '''
         
         self.srcTime = dateTime2Num(event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
-        srcTime = self.srcTime
-        dt = srcTime[1] - srcTime[0]
+        
+        dt = self.srcTime[1] - self.srcTime[0]
         """
             se requiere resolver un sistema lineal del tipo A*alphas = U
         """
@@ -83,7 +86,8 @@ class Source(object):
             R = (G.x_coord - LocX, G.y_coord - LocY, G.z_coord - LocZ)
     
             # funcion de green
-            t = G.timevector - dateTime2Num(date=event.origin_time)
+            # t = G.timevector - dateTime2Num(date=event.origin_time)
+            t = G.timevector - self.srcTime[0]
             alpha = G.P_velocity
             beta = G.S_velocity
             rho = G.RockDensity
@@ -156,7 +160,7 @@ class Source(object):
             #no invertible
             X = dot(dot(U, A.T), pinv(dot(A, A.T)))
     
-        src = zip(srcTime.T,
+        src = zip(self.srcTime.T,
                   X[range(0, 3 * numpoints, 3)].T,
                   X[range(1, 3 * numpoints, 3)].T,
                   X[range(2, 3 * numpoints, 3)].T
@@ -174,7 +178,7 @@ class Source(object):
         order = sorted(range(3), key=lambda k:val[k])
         val = val[order]
     
-        assert(val[0] < val[1] and val[1] < val[2])
+        #assert(val[0] <= val[1] <= val[2])
         rot[:, 1:4] = rot[:, 1:4][:, order]
     
         return(src, error, rot, vec, val)
