@@ -26,10 +26,10 @@ class Source(object):
         #x = (conv(G[0,0,:]))*dt
         
 
-    def source(self, numpoints=100, L=0.5, por=0.09, LocR=''):
+    def source(self, numpoints=100, L=0.5, por=0.0, LocR=''):
         event = self.event
         # precondiciones
-        assert(por > 0 and por < 1)
+        assert(0 <= por <= 1)
         assert(L > 0)
         assert(numpoints == int(numpoints))
     
@@ -78,12 +78,9 @@ class Source(object):
     
             # la relacion dt*hsr > 1
             deltat = dt * hsr
-            assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
+            #assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
     
-            R = (G.x_coord - LocX,
-                 G.y_coord - LocY,
-                 G.z_coord - LocZ
-                 )
+            R = (G.x_coord - LocX, G.y_coord - LocY, G.z_coord - LocZ)
     
             # funcion de green
             t = G.timevector - dateTime2Num(date=event.origin_time)
@@ -97,7 +94,6 @@ class Source(object):
             dtdomain = t[1] - t[0]
     
             F = cumsum(Gk, axis=2) * dtdomain
-    
             FF = zeros(shape(F))
     
             # matriz auxiliar en donde se almacenaran todas las convoluciones
@@ -185,7 +181,7 @@ class Source(object):
 
     def error(LocX, LocY, LocZ , seismograms_ids):
         
-        srcTime = dateTime2Num(event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
+        srcTime = dateTime2Num(self.event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
      
         self.srcTime = srcTime
     
