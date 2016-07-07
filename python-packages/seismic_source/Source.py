@@ -5,6 +5,7 @@ from scipy.signal import detrend
 from numpy import ndarray, fliplr, append
 from numpy import reshape
 from numpy.linalg import eig
+import numpy as np
 import re
 
 
@@ -25,8 +26,8 @@ class Source(object):
         
         #x = (conv(G[0,0,:]))*dt
         
-
-    def source(self, numpoints=100, L=0.5, por=0.0, LocR=None):
+    
+    def source(self, numpoints=100, L=0.5, por=0.0, LocR=None, srcTime=None):
         event = self.event
         # precondiciones
 
@@ -36,11 +37,14 @@ class Source(object):
         
         assert(numpoints == int(numpoints))
     
-        if(LocR == None):
+        if LocR is None:
             LocX, LocY, LocZ = (event.LocX, event.LocY, event.LocZ)
         else:
             LocX, LocY, LocZ = LocR
-    
+            
+        if srcTime is None:
+            self.srcTime = dateTime2Num(event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
+        
         '''
         reconstruccion de la fuente
         :param event: objeto del tipo event
@@ -49,9 +53,8 @@ class Source(object):
         :param por: fraccion de tiempo antes del tiempo estimado por Codelco
         '''
         
-        self.srcTime = dateTime2Num(event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
-        
         dt = self.srcTime[1] - self.srcTime[0]
+        
         """
             se requiere resolver un sistema lineal del tipo A*alphas = U
         """
@@ -151,7 +154,10 @@ class Source(object):
         # @todo: minimizar la norma 1 para hacer la estimacion mas robusta
         # resolucion del sistema lineal que minimiza la suma de la norma 2 de error
         assert(not any(isnan(A[:])))
-    
+        #from scipy.sparse import csr_matrix
+        #from scipy.sparse.linalg import lsqr
+        #matrix = csr_matrix(A.T)
+        # X = numpy.linalg.lstsq(A.T, U)[0]
         # regresion lineal
         if det(dot(A, A.T)) != 0:
             #invertible
@@ -180,133 +186,11 @@ class Source(object):
     
         #assert(val[0] <= val[1] <= val[2])
         rot[:, 1:4] = rot[:, 1:4][:, order]
-    
+        
+        assert(sum(rot[:, 1:4]**2) != 0.0)
+        
         return(src, error, rot, vec, val)
 
-    def error(LocX, LocY, LocZ , seismograms_ids):
-        
-        srcTime = dateTime2Num(self.event.origin_time) + linspace(-por * L, (1 - por) * L, numpoints)
-     
-        self.srcTime = srcTime
-    
-        dt = srcTime[1] - srcTime[0]
-        """
-            se requiere resolver un sistema lineal del tipo A*alphas = U
-        """
-        A, U = ([], [])
-    
-        # agregar el campo de desplazamiento a el vector de respuesta
-        for gs in event.seismograms:
-            # se agregan todas las dimensiones que mantienen mediciones validas
-            if gs.X_enabled == 1:
-                U = hstack((U, data[:, 0].T))
-    
-            if gs.Y_enabled == 1:
-                U = hstack((U, data[:, 1].T))
-    
-            if gs.Z_enabled == 1:
-                U = hstack((U, data[:, 2].T))
-    
-        for G in event.seismograms:
-    
-            # frecuencia de muestreo
-            hsr = G.hardware_sampling_rate
-    
-            # la relacion dt*hsr > 1
-            deltat = dt * hsr
-            assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
-    
-            R = (G.x_coord - LocX,
-                 G.y_coord - LocY,
-                 G.z_coord - LocZ
-                 )
-    
-            # funcion de green
-            t = G.timevector() - dateTime2Num(date=event.origin_time)
-            alpha = G.P_velocity
-            beta = G.S_velocity
-            rho = G.RockDensity
-    
-            Gk = GreenKernel(R=R, time=t, alpha=alpha, beta=beta, rho=rho)
-            assert(not any(isnan(Gk[:])))
-            # integracion de la funcion de Green
-            dtdomain = t[1] - t[0]
-    
-            F = cumsum(Gk, axis=2) * dtdomain
-    
-            FF = zeros(shape(F))
-    
-            # matriz auxiliar en donde se almacenaran todas las convoluciones
-            # producidas en un solo sensor.
-            B = []
-    
-            for jj in xrange(numpoints):
-                # para todo elemento de la base
-                ii = xrange(size(F, 2))
-    
-                # indices para los saltos en la convolucion entre la base y la
-                # funcion de Green
-    
-                tf = map(lambda I: int(max(I - floor(jj * deltat), 0)), ii)
-                ti = map(lambda I: int(max(I - floor((jj + 1) * deltat), 0)), ii)
-    
-                # convolucion con respecto la base seleccionada
-                FF[:, :, ii] = F[:, :, tf] - F[:, :, ti]
-                C = []
-                if G.X_enabled:
-                    if C == []:
-                        C = FF[0, :, :].copy()
-                    else:
-                        C = hstack((C, FF[0, :, :].copy()))
-                    assert(not any(isnan(C[:])))
-                if G.Y_enabled:
-                    if C == []:
-                        C = FF[1, :, :].copy()
-                    else:
-                        C = hstack((C, FF[1, :, :].copy()))
-                    assert(not any(isnan(C[:])))
-                if G.Z_enabled:
-                    if C == []:
-                        C = FF[2, :, :].copy()
-                    else:
-                        C = hstack((C, FF[2, :, :].copy()))
-                    assert(not any(isnan(C[:])))
-    
-                if B == []:
-                    B = C.copy()
-                else:
-                    B = vstack((B, C.copy()))
-    
-            if A == []:
-                A = B.copy()
-            else:
-                A = hstack((A, B.copy()))
-    
-        # @todo: minimizar la norma 1 para hacer la estimacion mas robusta
-        # resolucion del sistema lineal que minimiza la suma de la norma 2 de error
-        assert(not any(isnan(A[:])))
-    
-        # regresion lineal
-        if det(dot(A, A.T)) != 0:
-            #invertible
-            X = dot(dot(U, A.T), inv(dot(A, A.T)))
-        else:
-            #no invertible
-            X = dot(dot(U, A.T), pinv(dot(A, A.T)))
-    
-        src = zip(srcTime.T,
-                  X[range(0, 3 * numpoints, 3)].T,
-                  X[range(1, 3 * numpoints, 3)].T,
-                  X[range(2, 3 * numpoints, 3)].T
-                  )
-        # post condiciones
-        assert(shape(src) == (numpoints, 4))
-    
-        # error de estimacion
-        err = norm(U - dot(X, A), 2)
-        return err
-    
-    
 
 def S_Kernel(R, time, alpha, beta, rho):
 
