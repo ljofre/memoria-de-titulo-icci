@@ -25,7 +25,7 @@ theorems-ams-extended
 \font_tt_scale 100
 \graphics default
 \default_output_format default
-\output_sync 0
+\output_sync 1
 \bibtex_command default
 \index_command default
 \paperfontsize default
@@ -86,8 +86,8 @@ Antecedentes
 \end_layout
 
 \begin_layout Standard
-En minería ocurren sismisidad que con registrados por unos instrumentos
- llamados geo-fonos.
+En minería ocurren sismisidad que es registrada por unos instrumentos llamados
+ geo-fonos.
  Estos datos se usan para determinar la localización de las fuentes sísmicas.
  Esto implica determinar las coordenadas del hipocentro como el tiempo de
  origen.
@@ -236,6 +236,15 @@ conclusiones
 bibliografía
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Introducción
 \end_layout
@@ -251,49 +260,6 @@ Durante el proceso de explotación de la mina, los cambios mecanicos que
  el procesos productivo de una mina.
  Una caracterización adecuada de los eventos sismicos entrega informacion
  mecanica importante de los lugares donde estos ocurren.
-\end_layout
-
-\begin_layout Section
-Estimación con mínimos cuadrados
-\end_layout
-
-\begin_layout Standard
-El método que asuí se presenta consiste en 3 etapas etapas: 1) una reconstruccio
-n de la fuente sismica modelada como una fuerza a partir de las mediciones
- sismicas; y 2) Estimar el mejor epicentro.
- 3) Clasificación de las fuentes reconstruidas, separandolas en: fuentes
- contenidas principalmente en un plano; o fuentes con componentes comparables
- en todas las direcciones.
-\end_layout
-
-\begin_layout Subsection
-Estimación de la fuente sismica
-\end_layout
-
-\begin_layout Standard
-En la pasada década la sismología como ciencia
-\end_layout
-
-\begin_layout Standard
-Uno de los problemas más importantes en sismología es la de caracterizar
- la naturaleza de una fuente sismic
-\end_layout
-
-\begin_layout Standard
-La sismología es el estudio científico de las vibraciones mecánicas de la
- tierra.
- La sismología cuantitativa esta basada en datos llamados sismogramas, que
- son una grabación de la vibraciones de un punto en el medio en función
- del tiempo el cual puede ser representado como desplazamiento, velocidad
- o aceleración.
-\end_layout
-
-\begin_layout Standard
-En 
-\begin_inset Formula $1906$
-\end_inset
-
-, la existencia de las ondas compresivas
 \end_layout
 
 \begin_layout Chapter
@@ -1034,7 +1000,7 @@ Esto entrega una reconstrucción de
 \end_layout
 
 \begin_layout Chapter
-Inversión
+Solución al problema inverso
 \end_layout
 
 \begin_layout Standard
@@ -1071,6 +1037,49 @@ G_{ij}\left(\mathbf{x},t\right)=\frac{1}{4\pi\rho}\left(3\gamma_{i}\gamma_{j}-\d
 También, para algunos cálculos numéricos, específicamente para la estimación
  del epicentro va a ser necesario conocer los gradientes de la función de
  Green de la ecuación elastica
+\end_layout
+
+\begin_layout Section
+Estimación con mínimos cuadrados
+\end_layout
+
+\begin_layout Standard
+El método que asuí se presenta consiste en 3 etapas etapas: 1) una reconstruccio
+n de la fuente sismica modelada como una fuerza a partir de las mediciones
+ sismicas; y 2) Estimar el mejor epicentro.
+ 3) Clasificación de las fuentes reconstruidas, separandolas en: fuentes
+ contenidas principalmente en un plano; o fuentes con componentes comparables
+ en todas las direcciones.
+\end_layout
+
+\begin_layout Subsection
+Estimación de la fuente sismica
+\end_layout
+
+\begin_layout Standard
+En la pasada década la sismología como ciencia
+\end_layout
+
+\begin_layout Standard
+Uno de los problemas más importantes en sismología es la de caracterizar
+ la naturaleza de una fuente sismic
+\end_layout
+
+\begin_layout Standard
+La sismología es el estudio científico de las vibraciones mecánicas de la
+ tierra.
+ La sismología cuantitativa esta basada en datos llamados sismogramas, que
+ son una grabación de la vibraciones de un punto en el medio en función
+ del tiempo el cual puede ser representado como desplazamiento, velocidad
+ o aceleración.
+\end_layout
+
+\begin_layout Standard
+En 
+\begin_inset Formula $1906$
+\end_inset
+
+, la existencia de las ondas compresivas
 \end_layout
 
 \begin_layout Chapter
@@ -1140,6 +1149,22 @@ Separación de la onda en sus componentes
 
 \begin_layout Standard
 Visualización y persistencia de los resultados
+\end_layout
+
+\begin_layout Section
+preprocesamiento de los datos
+\end_layout
+
+\begin_layout Subsection
+Análisis de componentes principales
+\end_layout
+
+\begin_layout Chapter
+Casos de Prueba
+\end_layout
+
+\begin_layout Standard
+Validación de los resultados para una fuente artificial
 \end_layout
 
 \begin_layout Chapter*
@@ -1216,10 +1241,6 @@ negritas
 
 ) para designar un componente vectorial o tensorial en el sistema de coordenadas
  cartesiano.
-\end_layout
-
-\begin_layout Chapter
-Casos de Prueba
 \end_layout
 
 \begin_layout Bibliography

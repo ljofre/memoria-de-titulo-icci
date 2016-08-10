@@ -9,3 +9,5 @@ notebooks/.ipynb_checkpoints/
 .project
 .pydevproject
 .settings/
+*.lyx~
+lyx/doc/*.lyx~

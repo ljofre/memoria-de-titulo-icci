@@ -187,7 +187,6 @@ class Source(object):
         #assert(val[0] <= val[1] <= val[2])
         rot[:, 1:4] = rot[:, 1:4][:, order]
         
-        assert(sum(rot[:, 1:4]**2) != 0.0)
         
         return(src, error, rot, vec, val)
 
