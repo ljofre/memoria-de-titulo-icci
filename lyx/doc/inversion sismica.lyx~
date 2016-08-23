@@ -86,27 +86,6 @@ Antecedentes
 \end_layout
 
 \begin_layout Standard
-En minería ocurren sismisidad que es registrada por unos instrumentos llamados
- geo-fonos.
- Estos datos se usan para determinar la localización de las fuentes sísmicas.
- Esto implica determinar las coordenadas del hipocentro como el tiempo de
- origen.
-\end_layout
-
-\begin_layout Standard
-En la minería actual se registran constantemente eventos sísmicos, estos
- son producidos por eventuales fracturas del macizo o el desplazamiento
- de los planos geológicos uno sobre otro.
- La información de estos eventos y la caracterización de estos sismos son
- de importancia para conocer el estado físico del macizo mismo y así ser
- un antecedente para la toma de decisiones operativas en el proceso de explotaci
-ón.
- La sismología actual provee teoría suficiente para automatizar procesos
- de estimación de epicentros y caracterizar los microsismos apoyada por
- la teoría física de la elasticidad y algunos supuestos simplificadores.
-\end_layout
-
-\begin_layout Standard
 Los instrumentos son geófonos que registran el campo de velocidad o el campo
  de aceleración del evento sísmico en un punto del espacio y a partir de
  estas mediciones se estiman ciertas características del sismo, como el
@@ -250,8 +229,34 @@ Introducción
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+introducción
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+refutación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Durante el proceso de explotación de la mina, los cambios mecanicos que
- va sufriendo el maciso rocozo producen eventos sismicos.
+ el maciso rocozo va sufriendo producen sismisidad.
  Estos eventos son registrados por una red de geosensores, y las medicones
  obtenidas esta red se utilizan para estimar, entre otras cosas, la ubicación
  de la fuente sismica (epicentro) y el momento en que ocurrió el evento.

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from numpy.linalg import *
 from scipy import *
 from scipy.linalg import *
@@ -7,6 +9,8 @@ from numpy import reshape
 from numpy.linalg import eig
 import numpy as np
 import re
+
+from numba import jit
 
 
 class Source(object):
@@ -25,8 +29,7 @@ class Source(object):
         dt = self.srcTime[1] - self.srcTime[0]
         
         #x = (conv(G[0,0,:]))*dt
-        
-    
+      
     def source(self, numpoints=100, L=0.5, por=0.0, LocR=None, srcTime=None):
         event = self.event
         # precondiciones
@@ -291,15 +294,20 @@ def GreenKernel(R, time, alpha, beta, rho):
     r = norm(R, 2)
     x, y, z = R
 
-    dt = time[0] - time[1]
+    dt = time[1] - time[0]
 
+    #funcion indicatriz y los delta de dirac
+    """
     c_1 = array(map(int, logical_and(r / alpha < time, time < r / beta)))
     c_2 = array(map(int, time > r / alpha))
     c_3 = array(map(int, time > r / beta))
-
-    assert(not any(isnan(c_1)))
-    assert(not any(isnan(c_2)))
-    assert(not any(isnan(c_3)))
+    """
+    
+    c_1 = logical_and(r / alpha < time, time < r / beta).astype(int)
+    c_2 = (time > r / alpha).astype(int)
+    c_3 = (time > r / beta).astype(int)
+    
+    
 
     c_2 = append(diff(c_2[::-1])[::-1], 0)
     c_3 = append(diff(c_3[::-1])[::-1], 0)
@@ -370,3 +378,153 @@ def _rotate(data):
     rot = data.copy()
     rot[:, 1:4] = dot(data[:, 1:4], vec)
     return(rot, vec, val)
+
+def source_jit_compilation(numpoints=100, 
+                           LocR, 
+                           srcTime, 
+                           seismograms_data_values, 
+                           hsr, 
+                           x_coord, 
+                           y_coord, 
+                           z_coord,
+                           P_velocity,
+                           S_velocity,
+                           RockDensity):
+    '''
+    reconstruccion de la fuente
+    :param event: objeto del tipo event
+    :param numpoints=100: numero de la discretizacion de la fuente estimada
+    :param L: Largo de la ventana de tiempo de la fuente entimada
+    :param por: fraccion de tiempo antes del tiempo estimado por Codelco
+    '''
+
+    assert(numpoints == int(numpoints))
+
+    dt = srcTime[1] - srcTime[0]
+    
+    """
+        se requiere resolver un sistema lineal del tipo A*alphas = U
+    """
+    A, U = ([], [])
+
+    LocX = LocR[0]
+    LocY = LocR[1]
+    LocZ = LocR[2]
+    
+    for data, i in enumerate(seismograms_data_values):
+        
+        U = hstack((U, data[:, 0].T))
+
+        U = hstack((U, data[:, 1].T))
+
+        U = hstack((U, data[:, 2].T))
+
+        # hardware_sampling_rate
+        hsr = hsr[i]
+
+        # la relacion dt*hsr > 1
+        deltat = dt * hsr
+        #assert dt * hsr <= 1 , 'Advertencia: el producto dt * hsr deberia ser mayor que 1'
+
+        R = (x_coord[i] - LocX, y_coord[i] - LocY, z_coord[i] - LocZ)
+
+        # funcion de green
+        # t = G.timevector - dateTime2Num(date=event.origin_time)
+        t = data[:, 4].T - srcTime[0]
+        
+        alpha = P_velocity
+        beta = S_velocity
+        rho = RockDensity
+
+        Gk = GreenKernel(R=R, time=t, alpha=alpha, beta=beta, rho=rho)
+        assert(not any(isnan(Gk[:])))
+        # integracion de la funcion de Green
+        dtdomain = t[1] - t[0]
+
+        F = cumsum(Gk, axis=2) * dtdomain
+        FF = zeros(shape(F))
+
+        # matriz auxiliar en donde se almacenaran todas las convoluciones
+        # producidas en un solo sensor.
+        B = []
+
+        for jj in xrange(numpoints):
+            # para todo elemento de la base
+            ii = xrange(size(F, 2))
+
+            # indices para los saltos en la convolucion entre la base y la
+            # funcion de Green
+
+            tf = map(lambda I: int(max(I - floor(jj * deltat), 0)), ii)
+            ti = map(lambda I: int(max(I - floor((jj + 1) * deltat), 0)), ii)
+
+            # convolucion con respecto la base seleccionada
+            FF[:, :, ii] = F[:, :, tf] - F[:, :, ti]
+
+            # convolucion para un elemento de la base
+            C = []
+
+            if C == []:
+                C = FF[0, :, :].copy()
+            else:
+                C = hstack((C, FF[0, :, :].copy()))
+
+            if C == []:
+                C = FF[1, :, :].copy()
+            else:
+                C = hstack((C, FF[1, :, :].copy()))
+
+            if C == []:
+                C = FF[2, :, :].copy()
+            else:
+                C = hstack((C, FF[2, :, :].copy()))
+
+            if B == []:
+                B = C.copy()
+            else:
+                B = vstack((B, C.copy()))
+
+        if A == []:
+            A = B.copy()
+        else:
+            A = hstack((A, B.copy()))
+
+    # @todo: minimizar la norma 1 para hacer la estimacion mas robusta
+    # resolucion del sistema lineal que minimiza la suma de la norma 2 de error
+    assert(not any(isnan(A[:])))
+    #from scipy.sparse import csr_matrix
+    #from scipy.sparse.linalg import lsqr
+    #matrix = csr_matrix(A.T)
+    # X = numpy.linalg.lstsq(A.T, U)[0]
+    # regresion lineal
+    if det(dot(A, A.T)) != 0:
+        #invertible
+        X = dot(dot(U, A.T), inv(dot(A, A.T)))
+    else:
+        #no invertible
+        X = dot(dot(U, A.T), pinv(dot(A, A.T)))
+
+    src = zip(srcTime.T,
+              X[range(0, 3 * numpoints, 3)].T,
+              X[range(1, 3 * numpoints, 3)].T,
+              X[range(2, 3 * numpoints, 3)].T
+              )
+    
+    # post condiciones
+    assert(shape(src) == (numpoints, 4))
+
+    # error de estimacion
+    error = norm(U - dot(X, A), 2)
+    src = array(src)
+    rot, vec, val = _rotate(src)
+
+    #condiciones necesarias de orden de los valores propios y las coordenadas de
+    #la fuente
+    order = sorted(range(3), key=lambda k:val[k])
+    val = val[order]
+
+    #assert(val[0] <= val[1] <= val[2])
+    rot[:, 1:4] = rot[:, 1:4][:, order]
+    
+    
+    return(src, error, rot, vec, val)
