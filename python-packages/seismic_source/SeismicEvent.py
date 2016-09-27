@@ -1,7 +1,6 @@
 from importEvent import *
 import numpy as np
 import pandas as pd
-import matplotlib.pylab as plt
 import scipy.signal as sig
 import re
 from Source import dateTime2Num

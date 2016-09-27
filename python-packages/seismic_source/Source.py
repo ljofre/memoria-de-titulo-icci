@@ -379,7 +379,8 @@ def _rotate(data):
     rot[:, 1:4] = dot(data[:, 1:4], vec)
     return(rot, vec, val)
 
-def source_jit_compilation(numpoints=100, 
+@jit
+def source_jit_compilation(numpoints, 
                            LocR, 
                            srcTime, 
                            seismograms_data_values, 
@@ -397,8 +398,6 @@ def source_jit_compilation(numpoints=100,
     :param L: Largo de la ventana de tiempo de la fuente entimada
     :param por: fraccion de tiempo antes del tiempo estimado por Codelco
     '''
-
-    assert(numpoints == int(numpoints))
 
     dt = srcTime[1] - srcTime[0]
     
@@ -437,7 +436,7 @@ def source_jit_compilation(numpoints=100,
         rho = RockDensity
 
         Gk = GreenKernel(R=R, time=t, alpha=alpha, beta=beta, rho=rho)
-        assert(not any(isnan(Gk[:])))
+        
         # integracion de la funcion de Green
         dtdomain = t[1] - t[0]
 
@@ -489,13 +488,6 @@ def source_jit_compilation(numpoints=100,
         else:
             A = hstack((A, B.copy()))
 
-    # @todo: minimizar la norma 1 para hacer la estimacion mas robusta
-    # resolucion del sistema lineal que minimiza la suma de la norma 2 de error
-    assert(not any(isnan(A[:])))
-    #from scipy.sparse import csr_matrix
-    #from scipy.sparse.linalg import lsqr
-    #matrix = csr_matrix(A.T)
-    # X = numpy.linalg.lstsq(A.T, U)[0]
     # regresion lineal
     if det(dot(A, A.T)) != 0:
         #invertible
@@ -509,22 +501,5 @@ def source_jit_compilation(numpoints=100,
               X[range(1, 3 * numpoints, 3)].T,
               X[range(2, 3 * numpoints, 3)].T
               )
-    
-    # post condiciones
-    assert(shape(src) == (numpoints, 4))
-
-    # error de estimacion
-    error = norm(U - dot(X, A), 2)
-    src = array(src)
-    rot, vec, val = _rotate(src)
-
-    #condiciones necesarias de orden de los valores propios y las coordenadas de
-    #la fuente
-    order = sorted(range(3), key=lambda k:val[k])
-    val = val[order]
-
-    #assert(val[0] <= val[1] <= val[2])
-    rot[:, 1:4] = rot[:, 1:4][:, order]
-    
-    
-    return(src, error, rot, vec, val)
+        
+    return(src)

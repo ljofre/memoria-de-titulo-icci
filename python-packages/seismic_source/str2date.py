@@ -1,11 +1,6 @@
 #tramsforma la fecha en un objeto del tipo fecha
 class fecha(object):
-    year
-    month
-    day
-    hour
-    minute
-    second
+
     def fecha(self, datestring):
         #las fechas segun la documentacion de codelco tiene las fechas con el 
         #formato segun los siguientes ejemplos
