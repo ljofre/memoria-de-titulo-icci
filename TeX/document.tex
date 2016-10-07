@@ -1,0 +1,73 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass{article}
+
+\usepackage {pdfsync}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+
+\usepackage[none]{hyphenat}
+
+
+\begin{document}
+
+
+\section{Title}
+
+\subsection{Introducción}
+
+
+Una de las tareas más importantes en un observatorio sismológico es la
+localización de fuentes sísmicas. Esto significa determinar tanto las
+coordenadas del hipocentro como el tiempo de origen de estos eventos. Puesto
+que el volumen de datos que corresponden a las mediciones sísmicas es alta
+implican una alta demanda computacional aprovechar toda la información para
+generar estas estimaciones.
+Se presenta entonces el siguiente trabajo de título con un doble objetivo: Por
+un lado el diseño  de un algorítmico para la localización de hipocentros
+sísmico, tiempo de origen y caracterización las fuentes sísmicas. Por otra parte es la
+automatización de este proceso de estimación mediante una librería que puede ser
+empleada en una aplicación o servicio computacionales.
+Estos modelos y algoritmos fueron aplicados en el contexto de la minería
+subterránea a partir de las mediciones sísmicas disponibles. Los datos con
+que se testeó el modelo y la implementación fueron obtenidos de las mediciones
+de sismicidad de distintas minas de explotación subterránea de la división el
+teniente, Codelco.
+Se dividió este trabajo en los siguientes capítulos:
+Capítulo I: La teoría sísmica y la interpretación de las mediciones
+sismográficas suficiente para la comprensión de la problemática.
+Capítulo II: Se analizó desde la teoría de la elasticidad cuyas ecuaciones nos
+permite modelar los fenómenos sísmicos para un medio elástico, homogéneo e
+infinito y permite deducir la función de Green la cual es esencial para el
+diseño del algoritmo planteado en este trabajo.
+Capítulo IIb: A partir de los datos de entrenamiento se diseña una red neuronal
+que estima el tiempo de ocurrencia de la onda $P$ y la onda $S$.
+Capítulo III: Se describe el modelos numérico para resolver el problema, basado
+en los resultados expuestos en el capítulo II, este capítulo describe el modelo
+y algoritmo matemático que permitirá la estimación del hipocentro sísmico usando
+toda la información de la señal de los sismogramas, esto es una innovación con
+respecto los actuales algoritmos que hacen una estimación del hipocentro
+mediante el tiempo de arribo de la onda p y s, aunque usa esta estimación como
+condición inicial. En esta parte de describirá el concepto de problema inverso y
+una técnica para aplicarlo al problema elástico. Se justificara la demanda
+computacional que involucra.
+Capítulo IV: Se describirá el algoritmo y estructura de datos que se seleccionó
+para resolver el problema y su versión computacional.
+Capítulo V: está reservado para la descripción la versión computacional actual
+de la solución, o sea, la implementación del método, la arquitectura de software
+que se idónea que  según actuales autores se enmarca en el área de Big Data y
+Ciencia de los Datos.
+Capítulo VI: se describe la calidad del modelo y sus futuras aplicaciones,
+posibles mejoras y recomendaciones.
+
+Anexo A están los desarrollos matemáticos para los modelos físicos considerados
+en este trabajo. En el Anexo B están las pruebas para sismos sintéticos.
+
+
+\subsection{Another subtitle} 
+
+More plain text.
+
+
+\end{document}
