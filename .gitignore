@@ -11,3 +11,4 @@ notebooks/.ipynb_checkpoints/
 .settings/
 *.lyx~
 lyx/doc/*.lyx~
+*.bib.bak

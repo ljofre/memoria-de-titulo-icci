@@ -1,0 +1,27 @@
+% Encoding: UTF-8
+
+@Book{Shearer2009,
+  title         = {Introduction to Seismology},
+  publisher     = {Cambridge University Press},
+  year          = {2009},
+  author        = {Peter M. Shearer},
+  __markedentry = {[leonardojofre:6]},
+  date          = {2009-06-11},
+  ean           = {9780521708425},
+  isbn          = {0521708427},
+  pagetotal     = {412 Seiten},
+  url           = {http://www.ebook.de/de/product/8182844/peter_m_shearer_introduction_to_seismology.html},
+}
+
+
+
+@book{book:1505092,
+   title =     {Quantitative seismology},
+   author =    {Aki, Keiiti; Richards, Paul G},
+   publisher = {University Science Books},
+   isbn =      {1891389637,978-1-891389-63-4,9781680152418,1680152416},
+   year =      {2009},
+   series =    {},
+   edition =   {Second edition},
+   volume =    {},
+   url =       {http://gen.lib.rus.ec/book/index.php?md5=408E71D1E22E006C5F2459AE375E06BC}}

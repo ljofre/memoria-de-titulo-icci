@@ -1,0 +1,52 @@
+% Encoding: UTF-8
+
+@Book{Shearer2009,
+  title     = {Introduction to Seismology},
+  publisher = {Cambridge University Press},
+  year      = {2009},
+  author    = {Peter M. Shearer},
+  date      = {2009-06-11},
+  ean       = {9780521708425},
+  isbn      = {0521708427},
+  pagetotal = {412 Seiten},
+  url       = {http://www.ebook.de/de/product/8182844/peter_m_shearer_introduction_to_seismology.html},
+}
+
+@Book{KeiitiAki2002,
+  title         = {Quantitative Seismology},
+  publisher     = {UNIV SCIENCE BOOKS},
+  year          = {2002},
+  author        = {Keiiti Aki, Paul G. Richards},
+  __markedentry = {[leonardojofre:]},
+  date          = {2002-06-11},
+  ean           = {9781891389634},
+  isbn          = {1891389637},
+  pagetotal     = {700},
+  url           = {http://www.ebook.de/de/product/10404448/keiiti_aki_paul_g_richards_quantitative_seismology.html},
+}
+
+@Book{ThorneLay1995,
+  title         = {Modern Global Seismology},
+  publisher     = {ACADEMIC PR INC},
+  year          = {1995},
+  author        = {Thorne Lay, Terry C. Wallace},
+  __markedentry = {[leonardojofre:6]},
+  date          = {1995-05-11},
+  ean           = {9780127328706},
+  isbn          = {012732870X},
+  pagetotal     = {521},
+  url           = {http://www.ebook.de/de/product/4249644/thorne_lay_terry_c_wallace_modern_global_seismology.html},
+}
+
+@InProceedings{penrose1955generalized,
+  author       = {Penrose, Roger},
+  title        = {A generalized inverse for matrices},
+  booktitle    = {Mathematical proceedings of the Cambridge philosophical society},
+  year         = {1955},
+  volume       = {51},
+  number       = {03},
+  pages        = {406--413},
+  organization = {Cambridge Univ Press},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
