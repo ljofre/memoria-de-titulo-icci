@@ -9,8 +9,7 @@ from numpy import reshape
 from numpy.linalg import eig
 import numpy as np
 import re
-
-from numba import jit
+from sklearn.linear_model import Lasso, lasso_path
 
 
 class Source(object):
@@ -162,6 +161,16 @@ class Source(object):
         #matrix = csr_matrix(A.T)
         # X = numpy.linalg.lstsq(A.T, U)[0]
         # regresion lineal
+        
+        lasso = None
+        if lasso == True:
+            
+            _, lasso_path, _ = lasso_path(A.T, U)
+            rgr_lasso = Lasso()
+            rgr_lasso.fit(A.T, U)
+            X = rgr_lasso.coef_
+            
+            pass
         if det(dot(A, A.T)) != 0:
             #invertible
             X = dot(dot(U, A.T), inv(dot(A, A.T)))
@@ -379,7 +388,7 @@ def _rotate(data):
     rot[:, 1:4] = dot(data[:, 1:4], vec)
     return(rot, vec, val)
 
-@jit
+
 def source_jit_compilation(numpoints, 
                            LocR, 
                            srcTime, 

@@ -22,7 +22,8 @@ class TestSeismicFramework(unittest.TestCase):
     def set_up_sensor_from_source(self, g, src):
         pass
     def test_0_artificial_event(self):
-        """probar el algoritmo para un sismo artificial"""
+        """probar el algoritmo para un sismo artificial, se debe generar el mismo
+        sismo producido en el codigo matlab para poder comparar resultados"""
         
         #copiamos un evento real
         e = SeismicEvent.evento(file_name1)

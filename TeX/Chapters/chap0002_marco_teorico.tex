@@ -206,10 +206,7 @@ la línea delta s’ relativa al material que la rodea.
 
 Para eso vamos a introducir el concepto de gradiente espacial del campo de
 desplazamiento, o deformación. La deformación axial como medida de elongación,
-definida como:
-
-normal_strains eq
-
+definida como
 La deformación axial implica el cambio relativo de la distancia entre los
 puntos. El segmento de línea 0’P’ podría no haber sufrido cambios en su logitud,
 pero podría haber rotado respecto con el material que la envuelve. Su
@@ -332,11 +329,41 @@ Penrose cuando $B$ no es invertible.
 
 Esto entrega una reconstrucción de $\left(t\right)$ como
 $\hat{s}\left(t\right)=\sum_{j=1}^{J}\hat{\alpha}_{j}\varphi_{j}\left(t\right)$
- 
-
 
 
 \section{Ecuación de onda: La onda P y S}
+
+El 1900 Richard Oldham reporta la identificación de las ondas P, S, y ondas
+superficiales en un sismograma. 
+
+La onda S es una onda de mayor amplitud pero de velocidad de propagación más
+lenta, en cambio la onda P es del menor amplitud pero de mayor velocidad de
+propagación. Al cumplirse esta propiedad los sismogramas que están más lejos del
+hipocentro perciben ambas ondas en una diferencia de tiempo mayor que los que
+están más cercanos al mismo.
+
+Las ondas P son aquellas que se transmiten por la compresión y dilatación de las
+partículas. Ejemplo de estas ondas de compresión es el sonido (ondas acústicas),
+las partículas se mueven en el mismo sentido en que la onda se propaga (figura
+1.1-1) y son las que tienen mayor velocidad al desplazarse. Para un material
+elástico e isotrópico el modelo matemático para la velocidad es \cite{stein2009introduction}
+
+$$\alpha = \sqrt{\frac{\lambda + 2\mu}{\rho}}$$
+
+Donde $\alpha$ es la velocidad de ondas $P$, $\lambda$ es la constante de Lamé,
+$\mu$ es el módulo de rigidez y $\rho$ es la densidad, este tipo de onda puede
+propagarse tanto en líquidos como en sólidos ya que no involucra un cambio en el volumen.
+
+Por otro lado, las ondas S se transmiten perpendicularmente a la dirección de
+propagación de la onda, por lo que tienen una componente vertical (SV) y una
+horizontal (SH). Cuando solo se desplazan en una dirección se dice que es una
+onda polarizada. Se les conocen como ondas de cizalla o de corte. La velocidad
+de propagación es menor a la de las ondas P (figura 1.1-2) siendo su modelo
+matemático el siguiente \cite{stein2009introduction}:
+
+$$\beta = \sqrt{\frac{\mu}{\rho}}$$
+
+
 
 
 

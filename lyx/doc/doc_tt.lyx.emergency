@@ -74,7 +74,7 @@ theorems-ams-extended
 \begin_body
 
 \begin_layout Title
-Algorimo numérico de estimación de sismica.
+Algorimo no supervizado de estimación de sismica.
 \end_layout
 
 \begin_layout Standard
@@ -244,7 +244,7 @@ Buscamos una combinación lineal convexa
 \begin_inset Formula $\lambda_{1}+\lambda_{2}+\lambda_{3}=1$
 \end_inset
 
-
+, aunque valen hacen algunas modificaciones para considerar un pca simultaneo
 \end_layout
 
 \begin_layout Chapter*
@@ -257,9 +257,13 @@ Antecedentes
 
 \begin_layout Standard
 Los instrumentos son geófonos que registran el campo de velocidad o el campo
- de aceleración del evento sísmico en un punto del espacio y a partir de
- estas mediciones se estiman ciertas características del sismo, como el
- tiempo cuando ocurre y el lugar donde ocurre este.
+ de aceleración del evento sísmico en un punto del espacio.
+ A partir de estas mediciones se estiman ciertas características del sismo,
+ como el tiempo cuando ocurre y el lugar donde ocurre este.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -1305,7 +1309,11 @@ de procesamiento
 
 \begin_layout Standard
 Al considerar los siguientes aspectos que hacen que problema de inversión
- tenga un atractivo computacional
+ tenga un atractivo computacional 
+\begin_inset Formula $\utilde{x}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
