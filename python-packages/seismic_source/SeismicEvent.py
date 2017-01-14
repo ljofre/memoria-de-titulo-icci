@@ -34,7 +34,7 @@ class evento(object):
         # extraer todos los atributos del documento
         keyValuePatt = r'(\S+)[ ]+=[ ]+(.+)\n'
         atributos = re.findall(keyValuePatt, texto, 0)
-        print "importado!"
+
         # eliminar el texto sobrante []{3}\(in user system:.*\)
         sob = '[ ]+\(in user system:.*\)'
         f = lambda x:re.sub(sob, '', x)
