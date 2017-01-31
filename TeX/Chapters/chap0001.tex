@@ -4,24 +4,24 @@
 \chapter*{Introducción} 
 \addcontentsline{toc}{chapter}{Introducción} 
 
-Dentro de las objetivos de de la sismología se encuentra el estudio de los
-sismos y las causas que lo producen. Para cumplir este objetivo una de las
+Dentro de principales objetivos de de la sismología se encuentra el estudio
+de los sismos y las causas que lo producen. Para cumplir este objetivo una de las
 tareas más importantes en un observatorio sismológico es la localización de
-fuentes sísmicas, esto significa determinar tanto las coordenadas del hipocentro
+fuentes sísmicas: Esto significa determinar tanto las coordenadas del hipocentro
 como el tiempo de origen de dichos eventos sísmicos.
 
 Asumiendo la respuesta sísmica del medio existen modelos matemáticos que nos
 permiten estimar por medio de un conjunto de señales registradas ante la
 ocurrencia de un micro sismo los parámetros del hipocentro y además, aunque de
 forma inestable, cararterizar el sismo modelada como una fuerza modulada en el
-tiempo.
+tiempo. %% enviar este parrafo al aspecti físico del problema a resolver
 
-Se presenta entonces el siguiente trabajo de título con un doble objetivo: Por
-un lado el diseño algorítmico para la localización de hipocentros sísmico,
-tiempo de origen y caracterización las fuentes sísmicas. Por otra parte es la
-automatización de este proceso de estimación mediante un conjunto de
-implementaciones computacionales que ofrece una interfaz para que cuyas
-funcionalidades puedan ser empleadas en un software.
+El presente trabajo de título en si con un doble objetivo: Por un lado el diseño
+algorítmico para la localización de hipocentros sísmico, tiempo de origen y
+caracterización las fuentes sísmicas. Por otra parte es la automatización de
+este proceso de estimación mediante un conjunto de implementaciones
+computacionales que ofrece una interfaz para que cuyas funcionalidades puedan
+ser empleadas en un software.
 
 Estos modelos y alqgoritmos fueron aplicados en el contexto de la minería
 subterránea a partir de las mediciones sísmicas disponibles. Los datos con que
@@ -58,7 +58,23 @@ Capítulo VI: se describe la calidad del modelo y sus futuras aplicaciones,
 posibles mejoras y recomendaciones.
 
 Anexo A están los desarrollos matemáticos para los modelos físicos considerados
-en este trabajo. En el Anexo B están las pruebas para sismos sintéticos.
+en este trabajo. En el Anexo B están las pruebas para sismos sintéticos.q
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+  \begin{scope}[blend group = soft light]
+    \fill[red!30!white]   ( 90:1.2) circle (2);
+    \fill[green!30!white] (210:1.2) circle (2);
+    \fill[blue!30!white]  (330:1.2) circle (2);
+  \end{scope}
+  \node at ( 90:2)    {Typography};
+  \node at ( 210:2)   {Design};
+  \node at ( 330:2)   {Coding};
+  \node [font=\Large] {\LaTeX};
+\end{tikzpicture}
+\end{figure}
+
 
 \chapter{Justificación del tema} 
 
