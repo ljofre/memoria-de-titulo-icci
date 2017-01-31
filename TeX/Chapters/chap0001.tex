@@ -1,31 +1,42 @@
 
-\chapter{Antecedentes generales}
 
-\section{Introducción}
 
-Una de las tareas más importantes en un observatorio sismológico es la
-localización de fuentes sísmicas. Esto significa determinar tanto las
-coordenadas del hipocentro como el tiempo de origen de estos eventos. Puesto
-que el volumen de mediciones sísmicas es alta implican una alta demanda
-computacional para poder aprovechar de toda la información generada por los
-sismogramas.
+\chapter*{Introducción} 
+\addcontentsline{toc}{chapter}{Introducción} 
+
+Dentro de las objetivos de de la sismología se encuentra el estudio de los
+sismos y las causas que lo producen. Para cumplir este objetivo una de las
+tareas más importantes en un observatorio sismológico es la localización de
+fuentes sísmicas, esto significa determinar tanto las coordenadas del hipocentro
+como el tiempo de origen de dichos eventos sísmicos.
+
+Asumiendo la respuesta sísmica del medio existen modelos matemáticos que nos
+permiten estimar por medio de un conjunto de señales registradas ante la
+ocurrencia de un micro sismo los parámetros del hipocentro y además, aunque de
+forma inestable, cararterizar el sismo modelada como una fuerza modulada en el
+tiempo.
+
 Se presenta entonces el siguiente trabajo de título con un doble objetivo: Por
-un lado el diseño  de un algorítmico para la localización de hipocentros
-sísmico, tiempo de origen y caracterización las fuentes sísmicas. Por otra parte es la
-automatización de este proceso de estimación mediante una librería que puede ser
-empleada en una aplicación o servicio computacionales.
-Estos modelos y algoritmos fueron aplicados en el contexto de la minería
-subterránea a partir de las mediciones sísmicas disponibles. Los datos con
-que se testeó el modelo y la implementación fueron obtenidos de las mediciones
-de sismicidad de distintas minas de explotación subterránea de la división el
+un lado el diseño algorítmico para la localización de hipocentros sísmico,
+tiempo de origen y caracterización las fuentes sísmicas. Por otra parte es la
+automatización de este proceso de estimación mediante un conjunto de
+implementaciones computacionales que ofrece una interfaz para que cuyas
+funcionalidades puedan ser empleadas en un software.
+
+Estos modelos y alqgoritmos fueron aplicados en el contexto de la minería
+subterránea a partir de las mediciones sísmicas disponibles. Los datos con que
+se testeó el modelo y la implementación fueron obtenidos de las mediciones de
+sismicidad de distintas minas de explotación subterránea de la división el
 teniente, Codelco.
+
 Se dividió este trabajo en los siguientes capítulos:
 Capítulo I (Planteamiento del problema): La teoría sísmica y la interpretación
-de las mediciones sismográficas suficiente para la comprensión de la problemática.
+de las mediciones sismográficas suficiente para la comprensión de la
+problemática.
 Capítulo II (Marco teórico) Se analizó desde la teoría de la elasticidad cuyas
-ecuaciones nos permite modelar los fenómenos sísmicos para un medio elástico, homogéneo e
-infinito y permite deducir la función de Green la cual es esencial para el
-diseño del algoritmo planteado en este trabajo.
+ecuaciones nos permite modelar los fenómenos sísmicos para un medio elástico,
+homogéneo e infinito y permite deducir la función de Green la cual es esencial
+para el diseño del algoritmo planteado en este trabajo.
 Capítulo IIb: A partir de los datos de entrenamiento se diseña una red neuronal
 que estima el tiempo de ocurrencia de la onda $P$ y la onda $S$.
 Capítulo III: Se describe el modelos numérico para resolver el problema, basado
@@ -49,9 +60,9 @@ posibles mejoras y recomendaciones.
 Anexo A están los desarrollos matemáticos para los modelos físicos considerados
 en este trabajo. En el Anexo B están las pruebas para sismos sintéticos.
 
+\chapter{Justificación del tema} 
+
 \section{Objetivos}
-
-
 
 \subsection{General}
 
