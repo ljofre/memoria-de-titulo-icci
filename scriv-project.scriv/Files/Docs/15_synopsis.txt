@@ -1,0 +1,1 @@
+En este documento describe un poco el problema inverso en sismología, aparte describe el diagrama para estimar el tiempo de origen y así poder estimar el epicentro mediante una simple ecuación de la recta.
