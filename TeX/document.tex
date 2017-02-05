@@ -2,28 +2,43 @@
 %%There is just one section and two subsections.
 \documentclass[12pt]{book}
 
+% para poder hacer diagramas a bajo nivel en latex
+\usepackage{tikz}
+
+% para poder hacer diagramas de mas alto nivel en latex
+\usepackage{smartdiagram}
+
+% sincronizar el pdf con el archivo tex
 \usepackage {pdfsync}
+
+% importar archivos
+\usepackage{import}
+
+% manejo del lenguaje
 \usepackage[spanish]{babel}
 \selectlanguage{spanish}
 \usepackage[utf8]{inputenc}
+
+% formulas matematicas
 \usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage[paperheight=28cm,paperwidth=21.6cm, top=4cm, bottom=4cm,
-left=5cm, right=2cm]{geometry}
+
 \usepackage{bbm}
 \usepackage{bm}
 
-%%citacion
+%% citacion bajo normas apa
 \usepackage{apacite}
 
 %% redefinir comandos al formato utem
 \renewcommand{\baselinestretch}{1.5}
+\usepackage[paperheight=28cm,paperwidth=21.6cm, top=4cm, bottom=4cm,
+left=5cm, right=2cm]{geometry}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage{fontspec}
 %\setmainfont{Arial}
 
-\begin{document}
+\begin{document} 
 
 \tableofcontents
 \listoffigures
@@ -34,6 +49,8 @@ left=5cm, right=2cm]{geometry}
 \include{Chapters/chap0002_marco_teorico}
 
 \include{Chapters/chap0003}
+
+\include{tikz/ds_venn_diagram}
 
 \bibliographystyle{apacite}
 \bibliography{bibliography}
