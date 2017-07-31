@@ -1,1 +1,0 @@
-La parte de Machine learning nos permite utilizar la información de los casos pasados para obtener modelos neuronales.

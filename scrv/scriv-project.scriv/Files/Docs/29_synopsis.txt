@@ -1,1 +1,0 @@
-En este libro hay algunos algoritmos que podrían ser de utilidad para acelerar el proceso de inversión de la señal.
