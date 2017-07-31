@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+
+%%nuevos comandos especiales para este trabajo
+\newcommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\nodes}{$\left\{ \left( u_i,v_i \right) \right\}_i$}
+
+
+\title{Métodos computacionales para un problema inverso como problema
+  de optimización con información a priori}
+
+
+% las herramientas usadas deben ir en el anexo
+
+\author{Leonardo Andrés Jofré Flor}
+\begin{document}
+\maketitle
+%% un prefacio es, en literatura, un texto de introducción y de
+%% presentacion, ubicado al inicio del libro.
+\input{./prefacio.tex}
+
+%% en la introducción van los objetivos generales y los objetivos
+%% específicos del proyecto en particular.
+\input{./introduccion.tex}
+\input{./planteamiento.tex}
+
+% los capítulos restantes contienen el marco teórico del problema
+\input{./optimizacion_no_lineal.tex}
+\input{./teoria_problemas_inversos.tex}
+
+% a modo de ejemplo se demuestra el uso en dos dimensiones
+\input{./ejemplo_bidimensional.tex}
+ 
+\end{document}

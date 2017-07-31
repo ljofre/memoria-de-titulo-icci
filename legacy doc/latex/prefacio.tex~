@@ -1,0 +1,94 @@
+
+\section{Prefacio}
+
+% diagrama de la idea:
+% (1) el concepto errado de computación cuando se confunde con la informática
+% (2) la computación como técnica al servicio de las matemáticas, las matemáticas al servicio de la ingeniería.
+% (3) La computación tiene sus inicios en el cálculo numérico.
+% (4) Algebra lineal herramienta del computo para resolver problemas de algebra lineal
+
+
+%terminar esta idea
+Resolver problemas de la física desde la computación, si es que nos
+podemos referir a la computación solo como una forma de cálculo, es
+una de las técnicas que ha ido tomando cada vez más fuerza por la
+posibilidad de generar soluciones cada vez de forma mas eficiente a problemas cada vez más grandes. Esto se
+produce por evolución de los procesadores y su capacidad de cómputo,
+y las estructuras de datos que se han ido desarrollando para la
+solución en tiempos de cómputo cada vez de orden inferior y que se
+refieren habitualmente a métodos numéricos que tratan de generar
+soluciones a problemas clásicos originarios del álgebra lineal.
+
+%Acerca de los algoritmos y el hardware
+
+%un pequeño objetivo
+Creo que es necesario la integración de los algoritmos y el hardware para la resolución de complejos 
+problemas de ingeniería y también de la mecánica.
+
+% que es lo que contiene este trabajo de título
+El material incluido ... todos estos ingredientes necesarios para poder resolver un problema
+de mecánica computacional mediante la técnica de problemas inversos.
+
+
+
+%acerca de el poder de cómputo
+
+%explicar que el error conceptual generado
+Esto de la computación, que se refiere a la capacidad a la capacidad de uso
+intensivo de computadores, concepto ligeramente impromipio, dado que
+el instrumento no define la técnica 
+
+%ingresar este texto
+estudiando modelos algorítmicos de 
+fenómenos físicos, permite resolver problemas que no son tratables 
+analíticamente, o como se suele referir, requieren de métodos numérico.
+
+Luego, la computación permite un interesante juego teórico: Si se tiene un
+modelo detallado de la realidad que se aspira a comprender, se puede puede
+simular el comportamiento en la memoria de un computador para lograr medir
+cantidades relevantes, y en la medida de que la computación y
+algoritmos avanzan nos permiten generar herramientas automatizadas.
+
+
+El presente trabajo tiene nace en el contexto de crear las
+herramientas necesarias para la resolución más general de una linea de
+investigación de gravimetría para el laboratorio de modelamiento
+matemático para geomecánica (MMGEO) que tenía como objetivo estimar el
+cave-back a partir de las mediciones de gravedad (verticales) en
+terreno. Dada las necesidades de considerar geometrías más generales y
+además considerar la información de la producción de material de la
+mina es necesario hacer consideración de una nuevo método numérico que
+se base en otros supuestos %cuales supuestos
+
+La forma en que se desarrolló este trabajo depende fuertemente de la
+evolución de cada uno de los problemas puntuales que he tenido la
+explorados, buscando metodologías para la resolución de problemas,
+sirviendo de apoyo para otros matemáticos o creando nuevas
+implementaciones para los papers que instuiamos en que se podrán
+encontrar las soluciones para los subproblemas.
+
+Esto quiere decir que el desarrollo, aunque consideraba de mucho
+material y ya mucha implementación para la fecha en que se inicio esta
+tesis, gran parte del trabajo fue darle una secuencialidad, ordenando,
+revisando y desechando los multiples borradores en papel y papers
+sueltos.
+
+Mucho tiene de resumen del trabajo ya hecho, pero así mismo ese
+resumen recoje los argumentos necesarios para justificar los futuros
+trabajos que pueden ser posibles o en los que ya se están trabajando.
+
+Es posible que cada uno de los capítulos de este trabajo tiendan a
+parecer un trabajo independiente, eso es totalmente intencional, las
+razones son que cada uno de los términos de este trabajo se han
+desarrollado de forma independiente pero sin una conexión entre estas,
+cada una ha intentado trabajar con la física de forma
+independiente. Esto más que un defecto puede considerarse una
+oportunidad, dado que, un trabajo importante seráa la interelación de
+distintos modelos para obtener las generalizaciones de un modelo
+unificado.
+
+\begin{tikzpicture}[>=latex',scale=0.5] % set node style 
+\begin{dot2tex}[dot,tikz,codeonly,styleonly,options=-s -tmath]
+	 digraph G { node [style="n"]; p [label="+"]; t [texlbl="\LaTeX"]; 6 8 10-> p; 6 -> t; 8 -> t; t -> p; {rank=same; 10;6;8} } \end{dot2tex}. \begin{pgfonlayer}{background} \draw[rounded corners,fill=blue!20] (6.north west) -- (8.north east) -- (t.south east)--cycle; \end{pgfonlayer} \end{tikzpicture}
+
+

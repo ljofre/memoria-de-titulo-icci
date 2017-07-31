@@ -6,10 +6,11 @@ Created on Mon Feb  8 23:26:41 2016
 """
 
 import os
-from seismic_source import SeismicEvent
-from seismic_source.Source import Source
+
 from matplotlib import pylab as plt
 
+from Source import Source
+from seismic_source import SeismicEvent
 
 direc = os.path.dirname(__file__)
 

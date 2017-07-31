@@ -3,14 +3,14 @@
 import os
 import unittest
 
-import numpy as np
 import matplotlib.pylab as plt
-from numpy import shape
+import numpy as np
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
-from seismic_source import importEvent, SeismicEvent, Source
-from seismic_source.Source import GreenKernel, dateTime2Num
+from seismic_source import SeismicEvent
+import Source
+from Source import GreenKernel, dateTime2Num
 
 root_dir = os.path.dirname(__file__)
 file_name1 = os.path.join(root_dir,"./../../data-sets/1998_aug_09_21_49_22.4n3")

@@ -1,0 +1,1 @@
+La parte mecánica es necesaria para definir la función de Green y es la parte más teórica que justifica el problema inverso.

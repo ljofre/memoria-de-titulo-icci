@@ -1,0 +1,936 @@
+#LyX file created by tex2lyx 2.2
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /Users/leonardojofre/OneDrive/trabajo-de-titulo/TeX/Chapters/
+\textclass book
+\use_default_options false
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+
+\lang spanish
+Marco Teórico
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En este capítulo se describirá la naturaleza de esas ondas elásticas y el análisis de los sismogramas.
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Elementos de sismología
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La tierra está compuesta de silicatos y aleaciones de hierro con las que adquiere propiedades que sobre la amplia condiciones existentes de temperatura y presión en el planeta, el material responde de manera elástica. Por otro lado bajo la aplicación de fuerzas de baja magnitud y se comporta de manera viscosa y plástica sometida a fuerzas de larga duración. (cita requerida)
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Las vibraciones mecánicas resultantes de este comportamiento cuasi-elástico, implican la excitación y propagación de ondas elásticas en el interior. Muchas de estas ondas que se irradian son imperceptibles pero se pueden detectar con modernos instrumentos 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "pp. 1"
+key "Shearer2009"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La sismología ocupa una interesante posición en el campo de la geofísica y ciencias de la tierra. Presenta interesantes problemas teóricos que involucran el análisis de ondas elásticas que se propagan en medios complejos 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Shearer2009"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Mucha de la física subyacente no es más avanzada que la segunda ley de Newton (
+\begin_inset Formula $F=ma$
+\end_inset
+
+), pero la complicación es introducir fuentes sísmicas realístas y estructuras que motivan un tratamiento matemático sofisticado y el uso de poderosos computadores 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Shearer2009"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+de estas ondas Esas ondas son un desplazamiento físico como movimiento telúrico y son capturados por instrumentos llamados sismómetros los cuales son almacenados para su análisis científico. (cita requerida)
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La sismología es el estudio de la generación, propagación, y registro de las ondas elásticas de la tierra, y de las fuentes que la causan.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Ambas, los sismos naturales y los producidos por el hombre pueden generar ondas sísmicas: perturbaciones elásticas que se expanden esféricamente hacia fuera desde la fuente como resultado de un desequilibrio transitorio de las tensiones de la roca. Las propiedades de las ondas sísmicas están gobernadas por las leyes de la física de solidos elásticos, la cual está completamente descrita en la teoría de la elasto-dinámica. (cita requerida)
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Este conjunto de teorías basado en la mecánica de cuerpos continuos, elasticidad lineal y matemáticas aplicadas datan de principio del 1800, proveyendo de un marco de trabajo para el análisis de las ondas elásticas en la Tierra.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+A mediados de 1800 la teoría de ondas elásticas empezó a ser desarrollada por Cauchy, Poisson, Stokes, Rayleigh, y otros 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "pp. 2"
+key "Shearer2009"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La geofísica surgió como necesidad de justificar los fenómenos observados por la geología [LocEpic 2011]
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La sismología es la rama de la física de estudia los terremotos y los fenómenos asociados a ellos. En sus inicios era una ciencia observacional hasta que en el último siglo su desarrollo fue avanzando por el desarrollo tecnológico alcanzado. Este desarrollo se ve hoy en la exploración sísmica del petróleo, la evaluación de riesgo sísmico, la planificación del uso del suelo. [Localización de epicentros 2011]
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Una rango amplio de escalas de sismos son considerados en la sismología, para ambos los variados tipos de fuentes y los diversos tipos de ondas que se producen por estos. Los más pequeños de estos microsismos de los detectables tienen un momento sísmico (una importante cantidad física que es igual al producto entre el área de la superficie de falla, la rigidez de la roca, y el desplazamiento medio en la falla) tienen un orden de 
+\begin_inset Formula $10^5 Nm$
+\end_inset
+
+, y en los grandes terremotos tienen un momento de la magnitud de 
+\begin_inset Formula $10^23 Nm$
+\end_inset
+
+. La amplitud de las ondas sísmicas son directamente proporcionales al momento sísmico; Así los desplazamientos de las ondas sísmicas abarcan un enorme rango. Las ondas sísmicas que usualmente son usadas en exploración sismológica tienen frecuencias astas alrededor de los 200 Hz, mientras las de un largo periodo de los grandes terremotos tienen una frecuencia de 
+\begin_inset Formula $3x10^{-4} Hz$
+\end_inset
+
+. Así, los movimientos de la tierra que abarcan un rango de frecuencias de 
+\begin_inset Formula $10^7$
+\end_inset
+
+ son interesantes.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+De hecho el estudio de las fuentes sísmicas está más allá de extender el rango de interés a la frecuencia nula, o deformaciones estáticas, fallas o explosiones cercanas …
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Uno de los mayores desafíos plantados por el amplio ancho de banda de frecuencias, y el rango de amplitudes
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+ Sismogramas
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Los sismómetros miden la velocidad de una onda que se propaga por el medio en tres dimensiones, dos componentes horizontales y uno vertical. Cuando ocurre un evento sísimico, diferentes fases sísmicas llegan a diferentes distancias del hipocentro, y en diferentes componentes del instrumento. Las diferentes fases sísmicas tienen un diferente rango de frecuencias. Ondas de cuerpo en general tienen mayor frecuencia que las ondas de superficie.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Los sismogramas son “… instrumentos que graban de las vibraciones mecánicas de la tierra” [Modern Global Seismology]
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Ondas sísmicas
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Fuentes sísmicas
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Localización de epicentros
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Una de las tareas más importantes en un observatorio sismológico es la localización de fuentes sísmicas lo que significa determinar la localización del hipocentro y el tiempo de origen, para ello actualmente existen variadas técnicas y aún es un activo campo de investigación. En general, para determinar la ubicación del sismo se requiere la identificación de fases sísmicas y las mediciones de tiempo de llegada de las ondas principales, así como el conocimiento de algunos parámetros físicos, como lo son la densidad del medio y la velocidad de propagación de las ondas entre el hipocentro y la estación sísmica. Luego de estimada la ubicación se puede estimar el tiempo de origen.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Localización con una sola estación Localización con varias estaciones
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% Manual de Prevención Sísmica – INPRES – 1995 Earthquakes and Geological
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% Discovery –
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% Kulhánek - IASPEI/UNESCO - 1990 Introducción a la Geofísica – Benjamín F.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% Howell, Jr. – Ediciones Omega - 1962
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Teoría de la elasticidad y ondas sísmicas
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La sismología envuelve el análisis del movimiento de la tierra producida por la energía de fuentes dentro de la tierra, tal como terremotos sobre fallas o explosiones. Excepto en el vecindad inmediata de la fuente, la mayoría del desplazamiento es efímero; El medio vuelve a su posición inicial después de que el movimiento transmitido a declinado. Vibraciones de este tipo involucran pequeñas deformaciones elásticas, o tensiones. La teoría de la elasticidad provee las relaciones matemáticas entre la tensión y la presiones en el medio, y esto ha generado una vasta literatura llena de teoría y documentación empírica del comportamiento elástico del medio terrestre. En este texto se desarrolla solo lo básico de la teoría de la elasticidad requerida para aplicaciones sismológicas, incluido el concepto de presión y tensión, las ecuaciones de equilibro y movimiento, y la solución fundamental de la ecuación de movimiento: Las ondas sísmicas.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+El desarrollo que se hará de la teoría de la elasticidad sigue lo típico en los textos de mecánica de sólidos orientado a demostrar la existencia de la función de Green de la onda elástica que es parte fundamental del algoritmo propuesto.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En el estudio de sólidos, un útil concepto teórico que trata con el fenómeno macroscópico es el de medio continuo, en el cual la materia se distribuye continuamente en el medio. Dentro de este material continuo podemos definir funciones matemáticas para el campo de desplazamiento, tensiones y presión, la cuales tienen derivadas espaciales continuas. Aplicando simples leyes de la física al medio continuo, permite explicar casi toda la información de los sismogramas.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La Sismología en su mayor parte, en la práctica fenómenos con muy poca deformación (el cambio relativo es del orden de 
+\begin_inset Formula $10^6$
+\end_inset
+
+) sobre muy cortos periodos de tiempo (
+\begin_inset Formula $<3600$
+\end_inset
+
+ s). Esto simplifica mucho los modelos elásticos ya que se pueden omitir algún tipo de fase plástica del medio, se analiza solo como un problema elástico basado en la teoría infinitesimal de tensiones. En la vecindad más inmediata de la fuente sísmica, o cuando se considera una deformación de gran escala deformaciones de fallas (como en la geología estructural), se requiere de una teoría de las tensiones más general.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La relación entre fuerzas y deformaciones en la teoría de tensiones infinitesimal está validada empíricamente basada en las ley constitutiva o Ley de Hook. La deformación es en función de las propiedades del material, como lo son la densidad, la rigidez (resistencia a ser cortado) y la incompresibilidad (resistencia a cambiar de volumen). Las propiedades del material son conocidos como módulos elásticos. Cuando la tensión varia en el tiempo, la deformación varia similarmente, y el balance entre la deformación y la tensión resulta en ondas sísmicas. Esas ondas viajan en una velocidad que depende de los módulos elásticos del medio y son gobernadas por la ecuación de movimiento. Las ondas símicas son el desplazamiento de las partículas la cual se transforma en cada vez más compleja como la onda que se expande a través del cuerpo sólido. Se procederá a mostrar como esas ondas aparecen y como se representan matemáticamente.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Deformación
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Como la sismología está directamente asociada a la medida del movimiento en un medio, se empezará por considerar cómo describir el movimiento dentro de un sólido es descrito. Emplearemos enteonces una descripción Lagrangiana, en cual el desaplzamiento de una partícula es descrita comoo una función del tiempo y el espacio. Este es el sistema natural en sismología ya que es la forma en que los sismogramas registran el desplazamiento en un punto en función del tiempo. Sea en una continua distribución de partículas, así u(x,t) describe el campo de desplazamiento de cada punto en el medio, donde se está en libertar de elegir un sistema conveniente de referencia.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Un medio puede someterse a dos tipos de movimiento, (1) todo el sufre una translación o rotación (2) o sufre deformaciones, La translación y rotación puede ser descrita con un simple vector común para todos los puntos del medio. Pero, para un problema sísmico lo que importa son las deformaciones internas del medio, la cual intrinsicamente implica una variación espacial y temporal del medio 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Las deformacione en el medio están formadas por las que envuelven los cambios de logintud y distorciones angulares. Considere un cuerpo que está inicialmente no deformado y en dos puntos externos O y P no hay cargas. Estos puntos están conectados por la línea Delta s, Cundo fuerzas son aplicadas sobre el cuerpo, la deformación nueve O y P a O’ y P’, resectivamente, la línea cual conecta estos puntos ahora es delta s prima. Para describir la deformación del medio, se debe caracterizar el cambio de distancia entre los dos puntos y cualquier rotación de la línea delta s’ relativa al material que la rodea.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para eso vamos a introducir el concepto de gradiente espacial del campo de desplazamiento, o deformación. La deformación axial como medida de elongación, definida como La deformación axial implica el cambio relativo de la distancia entre los puntos. El segmento de línea 0’P’ podría no haber sufrido cambios en su logitud, pero podría haber rotado respecto con el material que la envuelve. Su consideramos una línea perpendicular al segmento OQ en el medio sin deformaciones que se mueve al punto O’Q’,
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Relación entre la tensión y el desplazamiento
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Ecuación de movimiento
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Función de Green para la ecuación diferencial elástica
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Asumiento que la propagación de la onda sismica en el medio homogéneo con dominio infinito está bien modelada. Es decir 
+\begin_inset Formula $\mathbf{u}\left(\mathbf{x},t\right)$
+\end_inset
+
+ representa el desplazamiento en el punto 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+ debido a la onda, entonces asumimos que la propagación de la onda 
+\begin_inset Formula $u$
+\end_inset
+
+ está modelada adecuadamente por la ecuación.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Formula \[\rho\ddot{\mathbf{u}}=\mathbf{f}+\left(\lambda+2\mu\right)\nabla\left(\nabla\cdot\mathbf{u}\right)-\mu\nabla\times\left(\nabla\times\mathbf{u}\right)\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+donde 
+\begin_inset Formula $\rho$
+\end_inset
+
+ es la densidad del medio, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $\mu$
+\end_inset
+
+ son los parámtros de Lamme que se asumen constantes y 
+\begin_inset Formula $\mathbf{f}$
+\end_inset
+
+ es la fuente sismica expresada como una fuerza,
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para resolver la ecuación existe la expresión explícita de la función de Green, es decir del campo de desplazamiento en la dirección 
+\begin_inset Formula $i$
+\end_inset
+
+ debido a un impulso en la dirección 
+\begin_inset Formula $j$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t=0$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Formula \begin{equation}
+\begin{split}
+G_{ij}\left(\mathbf{x},t\right)
+=
+\frac{1}{4\pi\rho}\left(3\gamma_{i}\gamma_{j}-\delta_{ij}\right)\frac{t}{r^{3}}1_{\left[\frac{r}{\alpha},\frac{r}{\beta}\right]}\left(t\right)
+\\
+&
++\frac{1}{4\pi\rho\alpha^{2}}\gamma_{i}\gamma_{j}\frac{1}{r}\delta\left(t-\frac{r}{\alpha}\right)
+\\&
+-\frac{1}{4\pi\rho\beta^{2}}\left(\gamma_{i}\gamma_{j}-\delta_{ij}\right)\frac{1}{r}\delta\left(t-\frac{r}{\beta}\right)
+\end{split}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Estimación de la fuente utilizando mínimos cuadrados
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Como describimos anteriormente, una fuente sismica carcterizada por una fuerza localizada en 
+\begin_inset Formula $\mbox{x}_{0}$
+\end_inset
+
+ modulada temporalmente según 
+\begin_inset Formula $\mbox{s}\left(t\right)$
+\end_inset
+
+ , se puede incluir en como un lado derecho de la forma 
+\begin_inset Formula $\mbox{s}\left(t\right)\delta_{\mathbf{x}_{0}}\left(\mbox{x}\right)$
+\end_inset
+
+. Denotamos la función de Green como 
+\begin_inset Formula $\mbox{G}\left(\mathbf{x}|t\right)$
+\end_inset
+
+ , podemos calcular el campo de desplazamiento de la onda en el punto 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ como en el tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+, como 
+\begin_inset Formula $u\left(x,t\right)=\mbox{G}\left(\mbox{\textbf{x}}-\mathbf{x}_{0}|t\right)\ast\mathbf{s}\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+donde las mediciones corresponden al campo de desplazamiento, a lo largo del tiempo, en las posiciones 
+\begin_inset Formula $\left\{ r_{k}\right\} _{k=1}^{K}$
+\end_inset
+
+. Es decir, nuestras mediciones corresponden al conocimiento de 
+\begin_inset Formula $u_{k}\left(t\right) = u\left(\mathbf{r}_{k},t\right)$
+\end_inset
+
+ para 
+\begin_inset Formula $t \in T_{k}\subset\mathbb{R}^{+}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Asumiendo qe la posición 
+\begin_inset Formula $\mathbf{x}_{0}$
+\end_inset
+
+ de la fuente es conocida y que 
+\begin_inset Formula $\left(t\right)$
+\end_inset
+
+ está soportado cerca de un tiempo 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ conocido, queremos plantear un metodo de reconstrucción de 
+\begin_inset Formula $\left(t\right)$
+\end_inset
+
+ mediante minimos cuadrados.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Consideremos 
+\begin_inset Formula $\left\{ \varphi_{j}\right\}_{j=1}^{J}$
+\end_inset
+
+ una familia de funciones linealmente independientes, soportadas alrededor de 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ , que nos permitan describir 
+\begin_inset Formula $\left(t\right)$
+\end_inset
+
+ aproximadamente. Es decir, consideremos que 
+\begin_inset Formula $\left(t\right)=\sum_{j=1}^{J}\alpha_{j}\varphi_{j}\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La familia 
+\begin_inset Formula $\left\{ \varphi_{j}\right\}_{j=1}^{J}$
+\end_inset
+
+ está dada y el objetivo es encontrar 
+\begin_inset Formula $\left\{ \alpha_{j}\right\}_{j=1}^{J}$
+\end_inset
+
+ a partir de las mediciones. Para esto según el modelo de proparación de onda, tenemos que 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ debería cumplir, para todo 
+\begin_inset Formula $k=1,\ldots,K$
+\end_inset
+
+ y para todo 
+\begin_inset Formula $t\in T_{k}$
+\end_inset
+
+ , que
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Formula \begin{eqnarray}
+u_{k}\left(t\right)	=	\left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast
+s\right]\left(t\right) \\
+ u_{k}\left(t\right)=\left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast\sum_{j=1}^{J}\alpha_{j}\varphi_{j}\right]\left(t\right)
+ \\
+ u_{k}\left(t\right)	=
+ \sum_{j=1}^{J}\alpha_{j}\left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast\varphi_{j}\right]\left(t\right)
+\end{eqnarray}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Encontrar los valores de 
+\begin_inset Formula $\left\{ \alpha_{j}\right\} _{j=1}^{J}$
+\end_inset
+
+ resolviendo la ecuación anterior, o escogiendo aquellos que se acerquen lo más posible a resolverla. Más explícitamente, encontrar 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ como
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Formula \[\left\{ \alpha_{j}\right\} =\arg\min_{\left\{ \alpha_{j}\right\}
+}\left(\sum_{k=1}^{K}\int_{T_{k}}\left(u_{k}\left(t\right)-\sum_{j=1}^{J}\alpha_{j}\left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast\varphi_{j}\right]\left(t\right)\right)^{2}dt\right)\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Como las mediciones temporales son efectivamente discretas, lo anterior se puede escribir de la manera matricial como
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Formula \[\hat{\alpha}=\arg\min_{\alpha}\left\Vert u-\alpha\cdot A\right\Vert ^{2}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+donde 
+\begin_inset Formula $u=\left(u_{k}\left(t\right)\right)_{k=\text{1,\ensuremath{\ldots},K}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Formula $\alpha=\left(\alpha_{1},\ldots,\alpha_{J}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+y 
+\begin_inset Formula \[A=\left(\left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast\varphi_{j}\right]\left(t\right)\right)_{k=1,\ldots,K;t\in
+T_{k};j=1,\ldots,J}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+escritos de manera adecuada. El problema anterior es un problema estándar de minimos cuadrados y la solución (el de menor norma en caso de admitir multiples minimizantes) se escribe como 
+\begin_inset Formula $\hat{\alpha}=u\cdot
+A^{t}\cdot\left(AA^{t}\right)^{+}$
+\end_inset
+
+ donde 
+\begin_inset Formula $B^{+}$
+\end_inset
+
+ es la pseudo inversa de Moore Penrose cuando 
+\begin_inset Formula $B$
+\end_inset
+
+ no es invertible.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Esto entrega una reconstrucción de 
+\begin_inset Formula $\left(t\right)$
+\end_inset
+
+ como 
+\begin_inset Formula $\hat{s}\left(t\right)=\sum_{j=1}^{J}\hat{\alpha}_{j}\varphi_{j}\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Ecuación de onda: La onda P y S
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+El 1900 Richard Oldham reporta la identificación de las ondas P, S, y ondas superficiales en un sismograma.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La onda S es una onda de mayor amplitud pero de velocidad de propagación más lenta, en cambio la onda P es del menor amplitud pero de mayor velocidad de propagación. Al cumplirse esta propiedad los sismogramas que están más lejos del hipocentro perciben ambas ondas en una diferencia de tiempo mayor que los que están más cercanos al mismo.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Las ondas P son aquellas que se transmiten por la compresión y dilatación de las partículas. Ejemplo de estas ondas de compresión es el sonido (ondas acústicas), las partículas se mueven en el mismo sentido en que la onda se propaga (figura 1.1-1) y son las que tienen mayor velocidad al desplazarse. Para un material elástico e isotrópico el modelo matemático para la velocidad es 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "stein2009introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Formula \[\alpha = \sqrt{\frac{\lambda + 2\mu}{\rho}}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Donde 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es la velocidad de ondas 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ es la constante de Lamé, 
+\begin_inset Formula $\mu$
+\end_inset
+
+ es el módulo de rigidez y 
+\begin_inset Formula $\rho$
+\end_inset
+
+ es la densidad, este tipo de onda puede propagarse tanto en líquidos como en sólidos ya que no involucra un cambio en el volumen.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Por otro lado, las ondas S se transmiten perpendicularmente a la dirección de propagación de la onda, por lo que tienen una componente vertical (SV) y una horizontal (SH). Cuando solo se desplazan en una dirección se dice que es una onda polarizada. Se les conocen como ondas de cizalla o de corte. La velocidad de propagación es menor a la de las ondas P (figura 1.1-2) siendo su modelo matemático el siguiente 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "stein2009introduction"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Formula \[\beta = \sqrt{\frac{\mu}{\rho}}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Machine Learning
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang spanish
+Redes Neuronales Artificiales
+\end_layout
+
+\end_body
+\end_document

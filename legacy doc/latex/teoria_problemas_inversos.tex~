@@ -1,0 +1,42 @@
+
+\section{Problemas inversos}
+
+Uno se los más famosos problemas invesos es el siguiente:¿Podemos
+escuchar la forma de de un tambor?, esto quiere decir: ¿Es posible
+encontrar una única forma para un tambor basándonos en el sonido que
+este emite?, el problema directo es verdaderamente simple, dado que,
+conocida la forma, podemos deducir el sonido que emite y su solución
+es conocida ya desde hace mucho tiempo, pero para la solución invesa
+la respuesta es que no, dado que dos tambores distintos pueden emitir
+el mismo sonido, esto quiere decir que si escuchamos un sonido no
+podríamos distinguir cual es la forma del que lo omite.
+
+Las teorías físicas nos permiten hacer predicciones: Dada una
+descripción completa de un sistema físico nosotros podemos predecir el
+resultado de algunos parámetros. El problema de predecir el resultado
+de las medidas es llamado \textit{problema de modelación o de
+  modelamiento}. El \textit{problema inverso} consiste en que, usando
+los resultados actuales inferir los valores de los parámetros que
+caracterizan el sistema.
+
+Muchos sistemas físicos pueden ser descritos usando un modelo lineal
+de la forma:
+
+$$AX = Y$$ en donde $X$ e $Y$ se consideran espacios de Hilbert.
+
+%todo: dibujo de caja para la causa y el efecto
+
+\subsection{Regularización}
+
+Método de regularización de Tichonoff
+
+La idea básica de la regularización de Tichonoff está relacionada con
+la minimización del funcional cuadrático:
+
+$$\Phi_\mu(f,g) = \| Af-g\|^2 + \mu \| f\|^2$$
+
+
+
+\subsection{Regularización iterativa para problemas no linealea}
+
+Al generar un sistema no lineal ...

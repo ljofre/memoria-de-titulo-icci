@@ -1,0 +1,1509 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Algorimo no supervizado de estimación de sismica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varepsilon_{\mbox{normal}}=\lim_{\Delta s\to0}\left(\frac{\Delta s'-\Delta s}{\Delta s}\right)\label{eq:normal_strains}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+busqueda de una condición inicial en el tiempo y en el espacio
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $\mathbf{u}_{k}\left(t\right)$
+\end_inset
+
+ el campo de desplazamiento en la posición 
+\begin_inset Formula $k$
+\end_inset
+
+, por lo que la posición 
+\begin_inset Formula $\mathbf{x}_{k}\left(t\right)=\mathbf{x}_{0,k}+\mathbf{u}_{k}\left(t\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $\mathbf{x}_{\mbox{ori}}$
+\end_inset
+
+ el punto en el espacio donde se estima que ocurrió el sismo, el vector
+ director de propagación radial del sismo desde el punto 
+\begin_inset Formula $\mathbf{x}_{\mbox{ori}}$
+\end_inset
+
+ a 
+\begin_inset Formula $\mathbf{x}_{0,k}$
+\end_inset
+
+ está dado por 
+\begin_inset Formula $\frac{\mathbf{x}_{0,k}-\mathbf{x}_{\mbox{ori}}}{\left\Vert \mathbf{x}_{0,k}-\mathbf{x}_{\mbox{ori}}\right\Vert }$
+\end_inset
+
+, buscamos proyectar el movimiento sobre ese vector 
+\begin_inset Formula $\frac{\mathbf{x}_{0,k}-\mathbf{x}_{\mbox{ori}}}{\left\Vert \mathbf{x}_{0,k}-\mathbf{x}_{\mbox{ori}}\right\Vert }\cdot\left(\mathbf{x}_{0,k}+\mathbf{u}_{k}\left(t\right)\right)$
+\end_inset
+
+ y hacer que esta norma sea máxima para todos los instantes 
+\begin_inset Formula 
+\[
+\int_{\mathbb{R}}\left\Vert \left(\mathbf{x}_{0,k}-\mathbf{x}_{\mbox{ori}}\right)\cdot\left(\mathbf{x}_{0,k}+\mathbf{u}_{k}\left(t\right)\right)\right\Vert ^{2}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si tratamos de minimizar esta función a todos los sismogramas simultaneamente
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J\left(\mathbf{x}_{\mbox{ori}}\right)=\sum_{k=1}^{N}\int_{\mathbb{R}}\left\Vert \left(\mathbf{x}_{0,k}-\mathbf{x}_{\mbox{ori}}\right)\cdot\left(\mathbf{x}_{0,k}+\mathbf{u}_{k}\left(t\right)\right)\right\Vert ^{2}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+el minimizador de esta función de costo coincide con la solución del siguiente
+ sistema lineal por mínimos cuadrados.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+J\left(\mathbf{x}_{\mbox{ori}}\right) & = & \sum_{k=1}^{N}\int_{\mathbb{R}}\left(\mathbf{x}_{0,k.1}-\mathbf{x}_{\mbox{ori},1}\right)^{2}\cdot\left(\mathbf{x}_{0,k,1}+\mathbf{u}_{k,1}\left(t\right)\right)^{2}+\left(\mathbf{x}_{0,k,2}-\mathbf{x}_{\mbox{ori},2}\right)^{2}\cdot\left(\mathbf{x}_{0,k,2}+\mathbf{u}_{k,2}\left(t\right)\right)^{2}+\left(\mathbf{x}_{0,k,3}-\mathbf{x}_{\mbox{ori},3}\right)^{2}\cdot\left(\mathbf{x}_{0,k,3}+\mathbf{u}_{k,3}\left(t\right)\right)^{2}dt\\
+ & = & \sum_{k=1}^{N}\left(\mathbf{x}_{0,k.1}-\mathbf{x}_{\mbox{ori},1}\right)^{2}\cdot\int_{\mathbb{R}}\left(\mathbf{x}_{0,k,1}+\mathbf{u}_{k,1}\left(t\right)\right)^{2}dt+\left(\mathbf{x}_{0,k,2}-\mathbf{x}_{\mbox{ori},2}\right)^{2}\cdot\int_{\mathbb{R}}\left(\mathbf{x}_{0,k,2}+\mathbf{u}_{k,2}\left(t\right)\right)^{2}dt+\left(\mathbf{x}_{0,k,3}-\mathbf{x}_{\mbox{ori},3}\right)^{2}\cdot\int_{\mathbb{R}}\left(\mathbf{x}_{0,k,3}+\mathbf{u}_{k,3}\left(t\right)\right)^{2}dt
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+derivando con respecto 
+\begin_inset Formula $\mathbf{x}_{\mbox{ori},1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\mathbf{x}_{\mbox{ori},1}}J=-2\sum_{k=1}^{N}\left(\mathbf{x}_{0,k.1}-\mathbf{x}_{\mbox{ori},1}\right)\cdot\int_{\mathbb{R}}\left(\mathbf{x}_{0,k,1}+\mathbf{u}_{k,1}\left(t\right)\right)^{2}dt=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+despejando 
+\begin_inset Formula $\mathbf{x}_{\mbox{ori},1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{x}_{\mbox{ori},1}=\frac{\sum_{k=1}^{N}\mathbf{x}_{0,k.1}\int_{\mathbb{R}}\left(\mathbf{x}_{0,k,1}+\mathbf{u}_{k,1}\left(t\right)\right)^{2}dt}{\sum_{k=1}^{N}\int_{\mathbb{R}}\left(\mathbf{x}_{0,k,1}+\mathbf{u}_{k,1}\left(t\right)\right)^{2}dt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+lo cual es directamente computable desde los datos de los sismogramas y
+ la posición de los sismógrafos
+\end_layout
+
+\begin_layout Standard
+Calculo del intervalo de tiempo que contenga la ocurrencia del sismo.
+\end_layout
+
+\begin_layout Standard
+Estrategia
+\end_layout
+
+\begin_layout Standard
+Buscamos el vector que maximice la varianza de la señal, de la misma manera
+ como se haría en un análisis de componentes principales con la salvedad
+ que se debe minimizar a todos simultaneamente.
+ Esto permite una estimación del punto de origen como.
+\end_layout
+
+\begin_layout Standard
+Análisis de componentes principales.
+\end_layout
+
+\begin_layout Standard
+Buscamos una combinación lineal convexa 
+\begin_inset Formula $\tilde{u}\left(t\right)=\lambda_{1}u_{1}\left(t\right)+\lambda_{2}u_{2}\left(t\right)+\lambda_{3}u_{3}\left(t\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $\lambda_{1}+\lambda_{2}+\lambda_{3}=1$
+\end_inset
+
+, aunque valen hacen algunas modificaciones para considerar un pca simultaneo
+\end_layout
+
+\begin_layout Chapter*
+Resumen
+\end_layout
+
+\begin_layout Subsection*
+Antecedentes
+\end_layout
+
+\begin_layout Standard
+Los instrumentos son geófonos que registran el campo de velocidad o el campo
+ de aceleración del evento sísmico en un punto del espacio y a partir de
+ estas mediciones se estiman ciertas características del sismo, como el
+ tiempo cuando ocurre y el lugar donde ocurre este.
+\end_layout
+
+\begin_layout Standard
+que son de discontinuidades en el medio
+\end_layout
+
+\begin_layout Standard
+gran frecuencia de ocurrencia de sismos
+\end_layout
+
+\begin_layout Standard
+es un problema de big data
+\end_layout
+
+\begin_layout Standard
+supuestos simplificadores, como la continuidad del medio, no acotado y de
+ densidad homogenera.
+\end_layout
+
+\begin_layout Standard
+A pesar de esto, no se ha desarrollado aun un método automatizado de estimación
+ de micro sismos, lo que implica que procesos manuales intervengan y, a
+ causa de esto, no aprovechar toda la sensibilidad de los instrumentos,
+ porque de así hacerlo, el volumen de información sería inmanejable para
+ estos.
+ La automatización de estos procesos no es simple, dado que la estimación
+ de estos sismos implican un costo computacional elevado para obtener las
+ incóginitas.
+\end_layout
+
+\begin_layout Standard
+Estos algoritmos tienden a ser de un costo computacional alto, pero al mismo
+ tiempo son altamente paralelizables
+\end_layout
+
+\begin_layout Standard
+Dado un conjunto de sismogramas se busca estima la fuente sísmica puntual
+ como una fuerza 
+\begin_inset Formula $\mathbf{F}\left(\mathbf{x}_{0},t\right)$
+\end_inset
+
+, además de ello, pretendo reutilizar lo anterior para estimar la fuente
+ sísmica puntual, de esta manera estimar el sismo como un volumen de fuerza.
+ luego sería posible para los sismogramas su descomposición como suma de
+ ondas 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $S$
+\end_inset
+
+ y de campo cercano para una fuente puntual.
+\end_layout
+
+\begin_layout Standard
+Como el computo 
+\begin_inset Formula $\mathbf{F}\left(\mathbf{x}_{i},t\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $\mathbf{x}_{i}\in V$
+\end_inset
+
+ y 
+\begin_inset Formula $V$
+\end_inset
+
+ una vecindad del epicentro puede llegar a ser muy costoso computacionalmente,
+ para reparar esto pretendo se implementaran los algoritmos bajo conceptos
+ de computación paralela, específicamente en 
+\series bold
+mpi4py
+\series default
+, una implementación en python de 
+\series bold
+MPI
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+*Marco teórico
+\end_layout
+
+\begin_layout Standard
+**Ecuación diferencial elástica
+\end_layout
+
+\begin_layout Standard
+**Función de Green o de transferencia
+\end_layout
+
+\begin_layout Standard
+*Sismogramas
+\end_layout
+
+\begin_layout Standard
+** Características de un sismograma
+\end_layout
+
+\begin_layout Standard
+*Reconstruccion de la fuente
+\end_layout
+
+\begin_layout Standard
+**Algoritmo de inversión para un epicentro puntual (deconvolución)
+\end_layout
+
+\begin_layout Standard
+*Optimización del algoritmo mediante computación paralela
+\end_layout
+
+\begin_layout Standard
+resultados
+\end_layout
+
+\begin_layout Standard
+conclusiones
+\end_layout
+
+\begin_layout Standard
+bibliografía
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Sismología
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+introducción
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+refutación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durante el proceso de explotación de la mina, los cambios mecanicos que
+ el maciso rocozo va sufriendo producen sismisidad.
+ 
+\end_layout
+
+\begin_layout Standard
+Estos eventos son registrados por una red de geosensores cuyas mediciones
+ se utilizan para estimar la ubicación de la fuente sismica (hipocentro)
+ y el momento en que ocurrió el evento.
+ El objetivo de este capítulo es utilizar las mediciones sismicas para ahondar
+ en el estudio y caracterizacion de los eventos sismicos durante el procesos
+ productivo de una mina.
+ Una caracterización adecuada de los eventos sismicos entrega informacion
+ mecanica importante de los lugares donde estos ocurren.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Fundamentos teóricos
+\end_layout
+
+\begin_layout Subsection
+Introducción
+\end_layout
+
+\begin_layout Standard
+La sismología es el estudio científico de las vibraciones mecánicas de la
+ tierra.
+ Sus análisis cuantitativos están basados en datos descritos por los sismogramas
+, que son grabaciones de dichas vibraciones, que a su vez pueden ser causadas
+ por explosiones ocasionadas artificialmente, o naturalmente por un terremoto
+ o una erupción volcánica.
+ Tales fenómenos han llamado fuertemente la atención de la humanidad por
+ siglos, incluso hoy en día despierta sentimientos de miedo y de misterio,
+ como así también la curiosidad intelectual.
+\end_layout
+
+\begin_layout Standard
+El gran desarrollo hecho en sismología desde 1880 - Donde instrumentos llamados
+ sismómetros fueron el primer desarrollo que podía grabar estas vibraciones
+ (ondas sísmicas) generadas por terremotos en otras partes del mundo -que
+ han sido estimuladas por la disponibilidad de cada vez mejores datos el
+ cual todavía se espera que pueden mejorar en las décadas futuras.
+ Los más significativos avances en este proceso han sido iniciados por un
+ conjunto de científicos bien fundados en los métodos de la física matemática.
+\end_layout
+
+\begin_layout Standard
+Cada generación de sismólogos ha trabajado en dirección de resultados cuantitati
+vos, limitados por la forma de hacer los cálculos, primero con el cálculo
+ manual y actualmente por el computación electrónica.
+ Desde 1960, los avances combinados en la instrumentación, nuetro conocimiento
+ de la Tierra, la teoría de las ondas sísmicas y la computación han convertido
+ gran parte de los datos contenidos en los sismogramas en información útil.
+ Esas mejoras se extienden incluso a la forma en que se interpreta la onda
+ registrada en los sismogramas y sus tiempos de llegada.
+ El modelo cuantitativo de la sismología actual envuelve una intenso juego
+ entre datos de alta calidad, detallados modelos de la mecánica de las fuentes
+ sísmicas, modelos internos de la estructura de la tierra, teoría de de
+ la propagación de indas ,teorías de la inversión de ondas y grandes computadore
+s modernos.
+ En este trabajo nos concentraremos escencialmente en los últimos tres puntos.
+ Actualmente la sismoogía es usada en prospección de minerales y exploración
+ de petroleo y gas natural, en ingeniería estructural para ayudar en el
+ deseño de construcciones antisísmicas.
+ Otros usos generalmente más a largo plazo en política ,en economía y en
+ problemas sociales asociados con la reducción de peligro sísmico, la detección
+ de explosiones nucleares.
+ Así, desde los años 70 se han estado haciendo grandes esfuerzos por mitigar
+ los riesgos de terremotos mejorando las estimaciones probabilísticas de
+ la ubicación y el tiempo de terremotos perjudiciales.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Un parrafo dedicado a justificar económicamente el estudio de la sismología
+ lo he dejado afuera
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La sismología está en un extremo de la totalidad en el espectro de las ciencias
+ de la tierra.
+ Primero, le concierne solamente con las propiedades mecánicas y dinámicas
+ de la Tierra.
+ Segundo 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+queda pendiente parte de la introducción, pero es necesario agregar más
+ fuentes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sobre la mecánica en medios continuos
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+bibliografía: intruducción a la mecánica de los medios continuos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La mecánica en medio continuo es una rama de la mecánica que se preocupa
+ de las tensiones en sólidos, liquidos y gases y la deformación de esos
+ materiales.
+ El adjetivo contunuo se refiere a la simplificación subyacente que proviene
+ del análisis: ignorar la estructura molecular de la materia y representarla
+ como un medio vacios o huecos.
+ Esto promueve por medio de la facilidad de su uso en estas condiciones,
+ de modelar estos objetos mediante la teoría de funciones continuas.
+ Exceptuando posiblemente a un numero finito de discontinuidades dentro
+ del medio que lo dividen en regiones continuas.
+ Este supuesto implica que las derivadas también han de ser continuas.
+ Este materías hipotético se denominará como medio continuo.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Aspectos de la teoría de la elasticidad
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mejorar la redacción, una buena guía es el libro de Knuth que está adjunto
+ en la bibliografía
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La teoría de la elasticidad estudia la mecánica de los cuerpos sólidos,
+ considerados bajo medios continuos, bajo la accion de fuerzas aplicadas
+ estos cuerpos se deforman, esto quiere decir que cambian su forma y su
+ volumen.
+\end_layout
+
+\begin_layout Subsection
+Estática
+\end_layout
+
+\begin_layout Standard
+Trabajaremos en este capítulos en las coordenadas cartesianas 
+\begin_inset Formula $\mathbf{x}=\left(x_{1},x_{2},x_{3}\right)$
+\end_inset
+
+ y todos los tensores serán cartesianos.
+ Usaremos el término desplazamiento considerandolo como una función del
+ espacio y del tiempo y será escrito 
+\begin_inset Formula $\mathbf{u}=\mathbf{u}\left(\mathbf{x},t\right)$
+\end_inset
+
+, que denota el vector de desplazamiento de una partícula desde el punto
+ 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+ con respecto alguna referencia para algún 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+.
+ Si 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ no cambia con respecto el tiempo, entonces 
+\begin_inset Formula $\frac{\partial\mathbf{u}}{\partial t}$
+\end_inset
+
+ y 
+\begin_inset Formula $\frac{\partial^{2}\mathbf{u}}{\partial t^{2}}$
+\end_inset
+
+ es la velocidad y la aceleración respectivamente.
+ Para analizar la distorción en el medio sea este sólido o líquido, elástico
+ o inelástico, se define el tensor de tensiones.
+ Si una partícula inicialmente está en la posición 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ y es movida a la posición 
+\begin_inset Formula $\mathbf{x}+\mathbf{u}$
+\end_inset
+
+, luego la relación 
+\begin_inset Formula $\mathbf{u}=\mathbf{u}\left(\mathbf{x}\right)$
+\end_inset
+
+ es usada para describir es campo vectorial de desplazamiento.
+ Para analizar la distorción de una parte del medio que está inicialmente
+ en una vecindad de 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, necesitamos saber la nueva posición de la partícula que fué inicialmente
+ 
+\begin_inset Formula $\mathbf{x}+\delta\mathbf{x}$
+\end_inset
+
+.
+ Esta nueva posición es 
+\begin_inset Formula $\mathbf{x}+\delta\mathbf{x}+\mathbf{u}\left(\mathbf{\mathbf{x}+\delta\mathbf{x}}\right)$
+\end_inset
+
+.
+ Cualquier distorción causa un cambio en la posición relativa del final
+ del elemento lineal 
+\begin_inset Formula $\delta\mathbf{x}$
+\end_inset
+
+.
+ Si este cambio es 
+\begin_inset Formula $\delta\mathbf{u}$
+\end_inset
+
+ enotnces 
+\begin_inset Formula $\delta\mathbf{x}+\delta\mathbf{u}$
+\end_inset
+
+ es el nuevo vector, y este se puede escribir como
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+dibujar el triangulo rectángulo que relaciona estas variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\mathbf{x}+\delta\mathbf{u}=\mathbf{x}+\delta\mathbf{x}+\mathbf{u}\left(\mathbf{\mathbf{x}+\delta\mathbf{x}}\right)-\left(\mathbf{x}+\mathbf{u}\left(\mathbf{x}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $\left|\delta\mathbf{x}\right|$
+\end_inset
+
+ es arbitrariamente pequeño, entonces, mediante un desarrollo en serie de
+ Taylor se puede expandir como 
+\begin_inset Formula $\mathbf{u}\left(\mathbf{\mathbf{x}+\delta\mathbf{x}}\right)=\mathbf{u}+\left(\delta\mathbf{x}\cdot\nabla\right)\mathbf{u}$
+\end_inset
+
+ por lo que 
+\begin_inset Formula 
+\begin{equation}
+\delta\mathbf{u}=\left(\delta\mathbf{x}\cdot\nabla\right)\mathbf{u}\to\delta u_{i}=\frac{\partial u_{i}}{\partial x_{j}}\delta x_{j}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En notación no tensorial
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\delta\mathbf{u} & = & \left(\delta\mathbf{x}\cdot\nabla\right)\mathbf{u}\\
+ & = & \left(\left(\delta x_{1},\delta x_{2},\delta x_{3}\right)\cdot\nabla\right)\mathbf{u}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Hacer la demostración por medio de serie de Taylor en los anexos
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Esta ecuación puede ser reescrita de la forma 
+\begin_inset Formula 
+\begin{equation}
+\delta u_{i}=\frac{1}{2}\left(u_{i,j}+u_{j,i}\right)\delta x_{j}+\frac{1}{2}\left(\mbox{curl}\mathbf{u}\times\delta\mathbf{x}\right)_{i}\label{eq:diffu}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego, el tensor de tensiones queda definido como 
+\begin_inset Formula $\sigma_{ij}=\frac{1}{2}\left(u_{i,j}+u_{j,i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y la rotación del cuerpo rígido es 
+\begin_inset Formula $\frac{1}{2}\mbox{curl }\mathbf{u}$
+\end_inset
+
+.
+ La interpretación del último término de 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:diffu"
+
+\end_inset
+
+ como la rotación de un cuerpo rígido es válida si 
+\begin_inset Formula $\left|u_{i,j}\right|\ll1$
+\end_inset
+
+ fuese no infinitesimal en el sentido de esta desigualdad, entonces deberíamos
+ en vez de analizar la contribución de 
+\begin_inset Formula $\delta\mathbf{u}$
+\end_inset
+
+ desde una rotación finíta - 
+\end_layout
+
+\begin_layout Standard
+Entenderemos tensión como la cantidad de fuerza por unidad de area y va
+ a depender del corte que se seleccione, las tensiones normales las vamos
+ a representar como 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ y las tesiones tangenciales como 
+\begin_inset Formula $\tau$
+\end_inset
+
+, pero las tensiones tangenciales van a tener dos subindices que representan
+ las dos direcciones ortogonales contenidas en el plano tangencial.
+\end_layout
+
+\begin_layout Section
+Modelo
+\end_layout
+
+\begin_layout Standard
+Consideremos que la propagación de la onda sismica en el medio rocoso está
+ bien modelada por una ecuación de onda elástica en un medio homogeneo sin
+ fronteras.
+ Es decir 
+\begin_inset Formula $\mathbf{u}\left(\mathbf{x},t\right)$
+\end_inset
+
+ representa el desplazamiento en el punto 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+ debido a la onda, entonces asumimos que la propagación de la inda 
+\begin_inset Formula $u$
+\end_inset
+
+ está modelada adecuadamente por la ecuación.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho\ddot{\mathbf{u}}=\mathbf{f}+\left(\lambda+2\mu\right)\nabla\left(\nabla\cdot\mathbf{u}\right)-\mu\nabla\times\left(\nabla\times\mathbf{u}\right)\label{eq:eqdeonda}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde la sensidad 
+\begin_inset Formula $\rho$
+\end_inset
+
+ y los parámetros de Lamé 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $\mu$
+\end_inset
+
+ se asymen constantes y conocidos.
+ 
+\begin_inset Formula $\mbox{f}$
+\end_inset
+
+ es la fuente sismica expresada como una fuerza,
+\end_layout
+
+\begin_layout Subsection
+Función de Green para elastodinámica
+\end_layout
+
+\begin_layout Standard
+Para resolver la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eqdeonda"
+
+\end_inset
+
+ existe la expresión explícita de la función de Green, es decir del campo
+ de desplazamiento en la dirección 
+\begin_inset Formula $i$
+\end_inset
+
+ debido a un impulso en la dirección 
+\begin_inset Formula $j$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+G_{ij}\left(\mathbf{x},t\right)=\frac{1}{4\pi\rho}\left(3\gamma_{i}\gamma_{j}-\delta_{ij}\right)\frac{t}{r^{3}}1_{\left[\frac{r}{\alpha},\frac{r}{\beta}\right]}\left(t\right)+\frac{1}{4\pi\rho\alpha^{2}}\gamma_{i}\gamma_{j}\frac{1}{r}\delta\left(t-\frac{r}{\alpha}\right)-\frac{1}{4\pi\rho\beta^{2}}\left(\gamma_{i}\gamma_{j}-\delta_{ij}\right)\frac{1}{r}\delta\left(t-\frac{r}{\beta}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Subsection
+Estimación de la fuente utilizando minimos cuadrados
+\end_layout
+
+\begin_layout Standard
+Como describimos anteriormente, una fuente sismica carcterizada por una
+ fuerza localizada en 
+\begin_inset Formula $\mbox{x}_{0}$
+\end_inset
+
+ modulada temporalmente según 
+\begin_inset Formula $\mbox{s}\left(t\right)$
+\end_inset
+
+, se puede incluir en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eqdeonda"
+
+\end_inset
+
+ como un lado derecho de la forma 
+\begin_inset Formula $\mbox{s}\left(t\right)\delta_{\mathbf{x}_{0}}\left(\mbox{x}\right)$
+\end_inset
+
+.
+ Denotamos la función de Green como 
+\begin_inset Formula $\mbox{G}\left(\mathbf{x}|t\right)$
+\end_inset
+
+, podemos calcular el campo de desplazamiento de la onda en el punto 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ como en el tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+, como 
+\begin_inset Formula 
+\[
+u\left(x,t\right)=\mbox{G}\left(\mbox{\textbf{x}}-\mathbf{x}_{0}|t\right)\ast\mathbf{s}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde las mediciones corresponden al campo de desplazamiento, a lo largo
+ del tiempo, en las posiciones 
+\begin_inset Formula $\left\{ r_{k}\right\} _{k=1}^{K}$
+\end_inset
+
+.
+ Es decir, nuestras mediciones corresponden al conocimiento de 
+\begin_inset Formula $u_{k}\left(t\right)=u\left(\mathbf{r}_{k},t\right)$
+\end_inset
+
+ para 
+\begin_inset Formula $t\in T_{k}\subset\mathbb{R}^{+}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Asumiendo qe la posición 
+\begin_inset Formula $\mathbf{x}_{0}$
+\end_inset
+
+ de la fuente es conocida y que 
+\begin_inset Formula $s\left(t\right)$
+\end_inset
+
+ está soportado cerca de un tiempo 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ conocido, queremos plantear un metodo de reconstrucción de 
+\begin_inset Formula $s\left(t\right)$
+\end_inset
+
+ mediante minimos cuadrados.
+\end_layout
+
+\begin_layout Standard
+Consideremos 
+\begin_inset Formula $\left\{ \varphi_{j}\right\} _{j=1}^{J}$
+\end_inset
+
+ una familia de funciones linealmente independientes, soportadas alrededor
+ de 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+, que nos permitan describir 
+\begin_inset Formula $s\left(t\right)$
+\end_inset
+
+ aproximadamente.
+ Es decir, consideremos que 
+\begin_inset Formula 
+\[
+s\left(t\right)=\sum_{j=1}^{J}\alpha_{j}\varphi_{j}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La familia 
+\begin_inset Formula $\left\{ \varphi_{j}\right\} _{j=1}^{J}$
+\end_inset
+
+ está dada y el objetivo es encontrar 
+\begin_inset Formula $\left\{ \alpha_{j}\right\} _{j=1}^{J}$
+\end_inset
+
+ a partir de las mediciones.
+ Para esto según el modelo de proparación de onda, tenemos que 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ debería cumplir, para todo 
+\begin_inset Formula $k=1,\ldots,K$
+\end_inset
+
+ y para todo 
+\begin_inset Formula $t\in T_{k}$
+\end_inset
+
+, que
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+u_{k}\left(t\right) & = & \left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast s\right]\left(t\right)\\
+u_{k}\left(t\right) & = & \left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast\sum_{j=1}^{J}\alpha_{j}\varphi_{j}\right]\left(t\right)\\
+u_{k}\left(t\right) & = & \sum_{j=1}^{J}\alpha_{j}\left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast\varphi_{j}\right]\left(t\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Encontrar los valores de 
+\begin_inset Formula $\left\{ \alpha_{j}\right\} _{j=1}^{J}$
+\end_inset
+
+ resolviendo la ecuación anterior, o escogiendo aquellos que se acerquen
+ lo más posible a resolverla.
+ Más explícitamente, encontrar 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ como
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\{ \alpha_{j}\right\} =\arg\min_{\left\{ \alpha_{j}\right\} }\left(\sum_{k=1}^{K}\int_{T_{k}}\left(u_{k}\left(t\right)-\sum_{j=1}^{J}\alpha_{j}\left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast\varphi_{j}\right]\left(t\right)\right)^{2}dt\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como las mediciones temporales son efectivamente discretas, lo anterior
+ se puede escribir de la manera matricial como 
+\begin_inset Formula 
+\[
+\hat{\alpha}=\arg\min_{\alpha}\left\Vert u-\alpha\cdot A\right\Vert ^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula 
+\[
+u=\left(u_{k}\left(t\right)\right)_{k=\text{1,\ldots,K}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\alpha=\left(\alpha_{1},\ldots,\alpha_{J}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y 
+\begin_inset Formula 
+\[
+A=\left(\left[G\left(r_{k}-\mathbf{x}_{0}\right)\ast\varphi_{j}\right]\left(t\right)\right)_{k=1,\ldots,K;t\in T_{k};j=1,\ldots,J}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+escritos de manera adecuada.
+ El problema anterior es un problema estándar de minimos cuadrados y la
+ solución (el de menor norma en caso de admitir multiples minimizantes)
+ se escribe como 
+\begin_inset Formula 
+\[
+\hat{\alpha}=u\cdot A^{t}\cdot\left(AA^{t}\right)^{+}
+\]
+
+\end_inset
+
+ donde 
+\begin_inset Formula $B^{+}$
+\end_inset
+
+ es la pseudo inversa de Moore Penrose cuando 
+\begin_inset Formula $B$
+\end_inset
+
+ no es invertible.
+\end_layout
+
+\begin_layout Standard
+Esto entrega una reconstrucción de 
+\begin_inset Formula $s\left(t\right)$
+\end_inset
+
+ como 
+\begin_inset Formula 
+\[
+\hat{s}\left(t\right)=\sum_{j=1}^{J}\hat{\alpha}_{j}\varphi_{j}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Solución al problema inverso
+\end_layout
+
+\begin_layout Standard
+Buscamos entre todos los posibles sismos el que minimice el la 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ error de estimación
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho\frac{\partial^{2}u}{\partial t^{2}}-\left(\lambda+2\mu\right)\nabla\left(\nabla\cdot u\right)+\mu\nabla\times\left(\nabla\times u\right)=f\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+G_{ij}\left(\mathbf{x},t\right)=\frac{1}{4\pi\rho}\left(3\gamma_{i}\gamma_{j}-\delta_{ij}\right)\frac{t}{r^{3}}1_{\left[\frac{r}{\alpha},\frac{r}{\beta}\right]}\left(t\right)+\frac{1}{4\pi\rho\alpha^{2}}\gamma_{i}\gamma_{j}\frac{1}{r}\delta\left(t-\frac{r}{\alpha}\right)-\frac{1}{4\pi\rho\beta^{2}}\left(\gamma_{i}\gamma_{j}-\delta_{ij}\right)\frac{1}{r}\delta\left(t-\frac{r}{\beta}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+También, para algunos cálculos numéricos, específicamente para la estimación
+ del epicentro va a ser necesario conocer los gradientes de la función de
+ Green de la ecuación elastica
+\end_layout
+
+\begin_layout Section
+Estimación con mínimos cuadrados
+\end_layout
+
+\begin_layout Standard
+El método que asuí se presenta consiste en 3 etapas etapas: 1) una reconstruccio
+n de la fuente sismica modelada como una fuerza a partir de las mediciones
+ sismicas; y 2) Estimar el mejor epicentro.
+ 3) Clasificación de las fuentes reconstruidas, separandolas en: fuentes
+ contenidas principalmente en un plano; o fuentes con componentes comparables
+ en todas las direcciones.
+\end_layout
+
+\begin_layout Subsection
+Estimación de la fuente sismica
+\end_layout
+
+\begin_layout Standard
+En la pasada década la sismología como ciencia
+\end_layout
+
+\begin_layout Standard
+Uno de los problemas más importantes en sismología es la de caracterizar
+ la naturaleza de una fuente sismic
+\end_layout
+
+\begin_layout Standard
+La sismología es el estudio científico de las vibraciones mecánicas de la
+ tierra.
+ La sismología cuantitativa esta basada en datos llamados sismogramas, que
+ son una grabación de la vibraciones de un punto en el medio en función
+ del tiempo el cual puede ser representado como desplazamiento, velocidad
+ o aceleración.
+\end_layout
+
+\begin_layout Standard
+En 
+\begin_inset Formula $1906$
+\end_inset
+
+, la existencia de las ondas compresivas
+\end_layout
+
+\begin_layout Chapter
+Computación
+\end_layout
+
+\begin_layout Subsection
+Estructura de datos y algoritmos
+\end_layout
+
+\begin_layout Subsection
+Arquitectura
+\end_layout
+
+\begin_layout Subsubsection
+Algoritmos
+\end_layout
+
+\begin_layout Standard
+Para estimar el epicentro
+\end_layout
+
+\begin_layout Standard
+se requerirá calcular los gradientes del epicentro 
+\end_layout
+
+\begin_layout Standard
+una rápida convergencia
+\end_layout
+
+\begin_layout Subsection
+de procesamiento
+\end_layout
+
+\begin_layout Standard
+Al considerar los siguientes aspectos que hacen que problema de inversión
+ tenga un atractivo computacional 
+\begin_inset Formula $\utilde{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+modelo de datos
+\end_layout
+
+\begin_layout Standard
+entrada
+\end_layout
+
+\begin_layout Standard
+Algoritmos y estructura de datos
+\end_layout
+
+\begin_layout Standard
+paralelización
+\end_layout
+
+\begin_layout Standard
+Separación de la onda en sus componentes 
+\begin_inset Formula $S$
+\end_inset
+
+ , 
+\begin_inset Formula $P$
+\end_inset
+
+ y de campo cercano
+\end_layout
+
+\begin_layout Standard
+Visualización y persistencia de los resultados
+\end_layout
+
+\begin_layout Section
+preprocesamiento de los datos
+\end_layout
+
+\begin_layout Subsection
+Análisis de componentes principales
+\end_layout
+
+\begin_layout Chapter
+Casos de Prueba
+\end_layout
+
+\begin_layout Standard
+Validación de los resultados para una fuente artificial
+\end_layout
+
+\begin_layout Chapter*
+Apendice I
+\end_layout
+
+\begin_layout Section
+Algunas demostraciones
+\end_layout
+
+\begin_layout Standard
+Demostrar que el diferencial del campo de desplazamiento está dado por
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta u_{i}=\frac{1}{2}\left(u_{i,j}+u_{j,i}\right)\delta x_{j}+\frac{1}{2}\left(\mbox{curl}\mathbf{u}\times\delta\mathbf{x}\right)_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Sea 
+\begin_inset Formula $\mathbf{u}\left(\mathbf{x}\right)$
+\end_inset
+
+ el campo de desplazamento, se cumple que la nueva posición de una partícula
+ que se encontraba en la posición 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ ahora es 
+\begin_inset Formula $\mathbf{x}+\mathbf{u}\left(\mathbf{x}\right)$
+\end_inset
+
+.
+ Para conocer la nueva posición de un punto en la vecindad de 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ entonces buscamos la nueva posición de 
+\begin_inset Formula $\mathbf{x}+\delta\mathbf{x}$
+\end_inset
+
+ la cual es 
+\begin_inset Formula $\mathbf{x}+\delta\mathbf{x}+\mathbf{u}\left(\mathbf{x}+\delta\mathbf{x}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Vectores y Tensores
+\end_layout
+
+\begin_layout Standard
+Usaremos en 
+\series bold
+negritas
+\series default
+ los símbolos que se refieren a un campo vectorial y un campo tensorial
+ y con subindices (e.j.
+ 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{kl}$
+\end_inset
+
+) para designar un componente vectorial o tensorial en el sistema de coordenadas
+ cartesiano.
+\end_layout
+
+\begin_layout Chapter
+Imagenes
+\end_layout
+
+\begin_layout Standard
+Tensión
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Keitti Aki
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+Landau: Teoría de la elasticidad
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Donald Knuth: Sobre la redacción de textos científicos
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Penrose, Roger (1955).
+ «A generalized inverse for matrices»
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+Jeffrey (1965)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-3"
+
+\end_inset
+
+Jeffrey and Jeffrey (1972)
+\end_layout
+
+\end_body
+\end_document

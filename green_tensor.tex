@@ -1,0 +1,251 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{amsmath}
+\begin{document}
+
+\begin{center}
+\begin{equation}
+\rho \frac{\partial^2\vec u}{\partial t^2} - (\lambda + 2\mu)\vec\nabla(\vec\nabla\cdot\vec u) + \mu\vec\nabla\times(\vec\nabla\times\vec u)=\vec F 
+\end{equation}
+\end{center}
+
+ usando $\quad\quad\quad\vec\nabla ^2\vec A - \vec\nabla(\vec\nabla\cdot\vec A) = -\vec\nabla\times(\vec\nabla\times\vec A)$
+ 
+ $\quad$
+ 
+$\begin{array}{cc}
+          &      \rho \frac{\partial^2\vec u}{\partial t^2} - (\lambda + 2\mu)\vec\nabla(\vec\nabla\cdot\vec u) + \mu( \vec\nabla(\vec\nabla\cdot\vec u)-\vec\nabla ^2\vec u )=\vec F \\
+          &
+          \rho \frac{\partial^2\vec u}{\partial t^2}=(\lambda + \mu)\vec\nabla(\vec\nabla\cdot\vec u)+\mu\vec\nabla^2\vec u + \vec F \\
+\end{array}$
+
+$\quad$
+\begin{center}
+Tensorialmente
+\end{center}
+\begin{center}$\boxed{\rho \frac{\partial^2 u_i}{\partial
+t^2}=(\lambda+\mu)\frac{\partial}{\partial x_i}\frac{\partial u_j}{\partial
+x_j}+\mu\frac{\partial^2 u_i}{\partial x_j \partial x_j} + F_i}$
+\end{center}
+ 
+$\quad$
+ 
+Si $F_i=\delta_{ij}\delta(t)\delta(x)$ se obtiene que la solución es $u_i=G_{ij}$.
+Buscamos una solución ortogonal con simetría esférica. Para ello descompondremos el problema con 2 operadores ortogonales $(M^p \text{y} M^s)$.
+ 
+Si $\vec v$ es un vector arbitrario $\vec v=\vec v(\vec x, t)$
+
+$
+    \begin{array}{rclclc}
+         &M^p\vec v&=&\vec\nabla(\vec\nabla\cdot\vec v)  \\
+             &M^s\vec v&=&\vec\nabla^2\vec v-\vec\nabla(\vec\nabla\cdot\vec v)&=&-\vec\nabla\times(\vec\nabla\times\vec v)
+    \end{array}
+$
+\begin{center}
+donde
+\end{center}
+$
+\begin{array}{rclclcr}
+    & M^p(M^s\vec v)&=&M^s(M^p\vec v)&=&0&\text{(ortogonalidad)} \\
+        & M^p(M^p\vec v)&=&M^p(\vec\nabla^2\vec v)\\
+        &M^s(M^s\vec v)&=&M^s(\vec\nabla^2\vec v)
+\end{array}$
+
+Reescribiendo (1) con $\boxed{\alpha^2=\frac{\lambda+2\mu}{\rho}\quad\text{y}\quad\beta^2=\frac{\mu}{\rho}}$
+
+\begin{center}
+$\rho\frac{\partial^2\vec u}{\partial t^2}-(\lambda +2\mu)M^p\vec u-\mu M^s\vec u =\vec F$
+\end{center}
+\begin{equation}
+\frac{\partial^2\vec u}{\partial t^2}=\frac{\vec F}{\rho}+\alpha^2M^p\vec u + \beta^2M^s\vec u
+\end{equation}
+    
+
+Podemos escribir $\vec u(\vec x,t)=M^p\vec A^p(\vec x,t)+M^s\vec A^s(\vec x,t)$
+
+donde al reemplazar en (2) y como $M^p$ y $M^s$ no dependen de t
+
+$\left(M^p\frac{\partial^2\vec A^p}{\partial t^2}+M^s\frac{\partial^2\vec A^s}{\partial t^2}\right)=\frac{\vec F}{\rho}+\alpha^2M^p(M^p\vec A^p+M^s\vec A^s)+\beta^2M^s(M^p\vec A^p+M^s\vec A^s)$
+
+
+como
+
+$
+\begin{array}{rclclclc}
+    &M^k(M^k\vec A^k)&=&M^k(\vec\nabla^2\vec A^k)&\quad\text{con}\quad k=\{s,p\} \\
+    & M^p(M^s\vec A)&=&M^s(M^p\vec A)&=0 \\
+    &
+\end{array}
+$
+
+$\quad$
+
+$
+\begin{array}{rcl}
+    &\left(M^p\frac{\partial^2\vec A^p}{\partial t^2}+M^s\frac{\partial^2\vec A^s}{\partial t^2}\right)=\frac{\vec F}{\rho} +\alpha^2M^p(\vec\nabla^2\vec A^p) +\beta^2M^s(\vec\nabla^2\vec A^s) \\
+    & M^p\left(\alpha^2\vec\nabla^2\vec A^p-\frac{\partial^2\vec A^p}{\partial t^2} \right)+M^s\left(\beta^2\vec\nabla^2\vec A^s-\frac{\partial^2\vec A^s}{\partial t^2}\right)+\frac{\vec F}{\rho}=0\\
+    &
+\end{array}
+$
+
+Además, $\vec F=\vec f(t)\delta(x)$; usando la relación $\nabla^2\left(\frac{-1}{4\pi r} \right)=\delta(x)$ donde 
+
+$r=|\vec x|=\sqrt{x^2+y^2+z^2}$, $\vec F=\vec f(t)\vec\nabla^2\left(\frac{-1}{4\pi r} \right)=\vec\nabla^2\left(\frac{-\vec f(t)}{4\pi r}\right)$.
+
+Así
+
+$M^p\left(\alpha^2\vec\nabla^2\vec A^p-\frac{\partial^2\vec A^p}{\partial t^2} \right)+M^s\left(\beta^2\vec\nabla^2\vec A^s-\frac{\partial^2\vec A^s}{\partial t^2}\right)=\frac{\vec\nabla^2}{\rho}\left(\frac{f(t)}{4\pi r}\right)$
+
+$\quad$
+
+como 
+
+$
+\begin{array}{rcllcl}
+    &M^p\vec v+M^s\vec v&=&\vec\nabla(\vec\nabla\cdot\vec\nabla)+\nabla^2\vec v-\vec\nabla(\vec\nabla\cdot\vec\nabla)
+    \\
+    &(M^p + M^s)\vec v&=&\nabla^2\vec v\\
+    &
+\end{array}
+$
+
+$\rho M^p\left(\alpha^2\vec\nabla^2\vec A^p-\frac{\partial^2\vec A^p}{\partial t^2}\right) + \rho M^s\left(\beta^2\vec\nabla^2\vec A ^s - \frac{\partial^2\vec A^s}{\partial t^2}\right)=M^p\left(\frac{f(t)}{4\pi r}\right)+M^s\left(\frac{f(t)}{4\pi r}\right)
+$
+Así, resolviendo para $\vec A$ que es análogo a $\vec A^s$ y $\vec A^p$ con $c^2=\{\alpha^2,\beta^2\}$).
+\begin{center}
+
+$
+c^2\vec\nabla^2\vec A - \frac{\partial^2\vec A}{\partial t^2}=\frac{\vec f(t)}{4\pi r\rho}\Bigg/\cdot r 
+$
+\end{center}
+\begin{center}
+Asumiendo simetría esférica para $\vec A=\vec A(r,t)$
+\end{center}
+
+$\vec\nabla^2\vec A=\frac{1}{r}\frac{\partial^2}{\partial r^2}(r\vec A)\rightarrow r\vec\nabla^2\vec A=\frac{\partial^2}{\partial r^2}(r\vec A)
+$
+
+$c^2\frac{\partial^2}{\partial r^2}(\vec A r)-r\frac{\partial^2\vec A}{\partial t^2}=\frac{\vec f(t)}{4\pi \rho};\quad(\vec f(t)=\ddot{\vec p }(t))
+$
+
+$c^2\frac{\partial^2}{\partial r^2}(r\vec A )-\frac{\partial^2}{\partial t^2}(r\vec A)=\frac{\vec f(t)}{4\pi \rho}=\frac{\ddot{\vec p }(t)}{4\pi \rho}
+$
+\begin{center}
+Ec. de onda inhomogénea para $r\vec A$
+\end{center}
+
+$r\vec A=\underbrace{\vec U_1\left(t-\frac{r}{c}\right)+\vec U_2\left(t+\frac{r}{c}\right)}_{\text{Sol. Homogénea}}-\underbrace{\frac{\vec p (t)}{4\pi\rho}}_{\text{Sol.Particular}}$
+\begin{center}
+$\vec U_2=\vec0$ \underline{pues las ondas salen desde el origen}! 
+
+y para evitar singularidades en $r\rightarrow0$
+\end{center}
+
+$0\cdot\vec A=\vec0=\vec U_1 (t)=\frac{\vec p (t)}{4\pi\rho}\rightarrow\vec U_1\left(t-\frac{r}{c}\right)=\frac{\vec p \left(t-\frac{r}{c}\right)}{4\pi\rho}$
+
+Así, $\vec A(r,t)=\frac{\vec p\left(t-\frac{r}{c}\right)-\vec p (t)}{4\pi\rho r}$
+
+$\vec A^p=\frac{\vec p\left(t-\frac{r}{\alpha}\right)-\vec p (t)}{4\pi\rho r};\vec A^s=\frac{\vec p\left(t-\frac{r}{\beta}\right)-\vec p (t)}{4\pi\rho r}$
+
+donde $\vec u=M^p\vec A^p+M^s\vec A^s$
+
+$M^p\vec v=\vec\nabla(\vec\nabla\cdot\vec v);M^s\vec v =\vec\nabla^2\vec v-\vec\nabla(\vec\nabla\cdot\vec v)$
+
+$\vec u=\vec\nabla\left(\vec\nabla\cdot\left(\frac{\vec p\left(t-\frac{r}{\alpha}\right)-\vec p (t)}{4\pi\rho r} \right)\right) +\vec\nabla^2\left(\frac{\vec p \left(t-\frac{r}{\beta}\right)-\vec p (t)}{4\pi\rho r}\right)-\vec\nabla\left(\vec\nabla\cdot\left(\frac{\vec p\left(t-\frac{r}{\beta}\right)-\vec p (t)}{4\pi\rho r}\right)\right) $
+
+$\vec u=-\vec\nabla^2\left(\frac{\vec p (t)}{4\pi\rho r}\right)+(\vec\nabla^2-\vec\nabla(\vec\nabla\cdot))\left(\frac{\vec p \left(t-\frac{r}{\beta}\right)}{4\pi\rho r}\right)-\vec\nabla\left(\vec\nabla\cdot\left(\frac{\vec p\left(t-\frac{r}{\alpha}\right)}{4\pi\rho r}\right)\right)$
+
+$\quad$
+
+donde recordamos $r=|\vec x|=\sqrt{x^2+y^2+z^2}$.
+\begin{center}
+Reescribiendo en forma tensorial
+\end{center}
+
+$u_i=-\delta_{ij}\nabla^2\left(\frac{P_j(t)}{4\pi\rho r}\right)+\left(\delta_{ij}\nabla^2-\frac{\partial^2}{\partial x_i\partial x_j}\right)\left(\frac{P_j\left(t- \frac{r}{\beta}\right)}{4\pi\rho r}\right)+\frac{\partial^2}{\partial x_i \partial x_j}\left(\frac{P_j\left(t-\frac{r}{\alpha}\right)}{4\pi\rho r}\right)$
+$\quad$
+
+Donde $\delta_{ij}\nabla^2\left(\frac{P_j (t)}{4\pi \rho r}\right)=P_j (t)\frac{\partial^2}{\partial x_j\partial x_j}\left(\frac{1}{4\pi\rho r}\right)$
+
+$
+\quad\quad\quad\quad\quad\quad\quad\quad\quad=\frac{P_j (t)}{4\pi\rho}\left(\frac{\partial^2}{\partial x_j\partial x_j}\left(\frac{1}{r}\right)\right)
+$
+
+$
+\quad\quad\quad\quad\quad\quad\quad\quad\quad=\frac{P_j (t)}{4\pi\rho}\left(\frac{3\gamma_j\gamma_j-\delta_{ij}}{r^3}\right)=0\quad;\quad r > 0
+$
+
+\begin{center}
+donde $\gamma_j\gamma_j=1=\gamma^2_x+\gamma^2_y+\gamma^2_z=\frac{x^2+y^2+z^2}{r^2}$
+
+$\delta_{jj}=1+1+1\quad\quad(\text{convenio de Einstein})$
+\end{center}
+
+Así,
+$u_i=\left(\delta_{ij}\nabla^2-\frac{\partial^2}{\partial x_i\partial x_j}\right)\left(\frac{P_j\left(t-\frac{r}{\beta}\right)}{4\pi\rho r}\right)+\frac{\partial^2}{\partial x_i\partial x_j}\left(\frac{P_j\left(t-\frac{r}{\alpha}\right)}{4\pi\rho r}\right)$
+
+$u_i=(\delta_{ij}-\gamma_i\gamma_j)\frac{\ddot P_j \left(t-\frac{r}{\beta}\right)}{4\pi\rho\beta^2r} +\frac{\gamma_i\gamma_j}{4\pi\rho r\alpha^2}\ddot P_j\left(t-\frac{r}{\alpha}\right)+\frac{P_j\left(t-\frac{r}{\alpha}\right)-P_j\left(t-\frac{r}{\beta}\right)}{4\pi\rho}\frac{\partial^2}{\partial x_i\partial x_j}\left(\frac{1}{r}\right)$
+\begin{center}
+
+
+donde $\frac{\partial^2}{\partial x_i\partial
+x_j}\left(\frac{1}{r}\right)=\frac{\partial}{\partial x_i}\left(-\frac{1}{r^2}\frac{\partial r}{\partial x_j}\right)$
+\end{center}
+$=\frac{2}{r^3}\frac{\partial r}{\partial x_i}\frac{\partial r}{\partial x_j}-\frac{1}{r^2}\frac{\partial}{\partial x_i}\left(\frac{\partial r}{\partial x_j}\right)$
+
+$\quad$
+
+$=\frac{2}{r^3}\gamma_i\gamma_j-\frac{1}{r^2}\left(\frac{\partial}{\partial x_i}\left(\frac{x_j}{r}\right)\right)$
+
+$\quad$
+
+$=\frac{2}{r^3}\gamma_i\gamma_j-\frac{1}{r^2}\left(\frac{\partial x_j}{\partial x_i}\left(\frac{1}{r}\right)-\frac{x_j}{r^2}\frac{\partial r}{\partial x_i}\right)$
+
+$\quad$
+
+$=\frac{2}{r^3}\gamma_i\gamma_j-\frac{1}{r^3}\delta_{ij}+\frac{1}{r^3}\gamma_j\gamma_i$
+
+$=\frac{3\gamma_i\gamma_j-\delta_{ij}}{r^3}$
+
+$u_i=(\delta_{ij}-\gamma_i\gamma_j)\frac{1}{4\pi\rho\beta^2r}\ddot{P}_j\left(t-\frac{r}{\beta}\right)+\frac{\gamma_i\gamma_j}{4\pi\rho\alpha^2 r}\ddot{P}_j\left(t-\frac{r}{\alpha}\right)+\left(\frac{3\gamma_i\gamma_j-\delta_{ij}}{4\pi\rho r^3}\right)\left(P_j\left(t-\frac{r}{\alpha}\right)-P_j\left(t-\frac{r}{\beta}\right)\right)$
+
+Para hallar $G_{ij}$ basta considerar
+\begin{center}
+$
+\begin{array}{ccrr}
+&u_i=G_{ij}&\leftrightarrow& f_i=\delta_{ij}\delta (t)\delta (\vec r)\\
+& & & f_i=\delta_{ij}\delta(t)
+\end{array}
+$
+\end{center}
+$\quad$
+
+Así $P_i(t)=\delta_{ij}R(t)$
+
+$R(t)=\left\{
+\begin{array}{ccrr}
+&t&;&t>0\\
+&0&;&t<0\\
+\end{array}
+\rightarrow \ddot{P}_i (t)=\delta(t)\right.$
+
+$\quad$
+
+Finalmente tenemos lo siguiente,
+
+$\quad$
+\begin{center}
+
+
+$G_{ij}=-\frac{(-\delta_{ij}+\gamma_i\gamma_j)}{4\pi\rho\beta^2r}\delta\left(t-\frac{r}{\beta}\right)+\frac{\gamma_i\gamma_j}{4\pi\rho\alpha^2r}\delta\left(t-\frac{r}{\alpha}\right)+\left(\frac{3\gamma_i\gamma_j-\delta_{ij}}{4\pi\rho r^3}\right)\underbrace{\int_{\frac{r}{\alpha}}^{\frac{r}{\beta}}\tau\delta(1-\tau)d\tau}_{t}\quad\rightarrow \boxed{\begin{array}{lcr}  
+&\text{Usando}\quad\text{la}\\     
+&\text{representación}\quad\\   
+&\text{integral}\quad\text{de}\quad R(t)\\  
+&   
+\end{array}}$
+\end{center}
+
+\end{document}

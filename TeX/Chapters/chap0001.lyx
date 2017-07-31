@@ -1,0 +1,372 @@
+#LyX file created by tex2lyx 2.2
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /Users/leonardojofre/OneDrive/trabajo-de-titulo/TeX/Chapters/
+\textclass book
+\use_default_options false
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+
+\lang spanish
+Introducción
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+addcontentsline{toc}{chapter}{Introducción}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Dentro de principales objetivos de de la sismología se encuentra el estudio de los sismos y las causas que lo producen. Para cumplir este objetivo una de las tareas más importantes en un observatorio sismológico es la localización de fuentes sísmicas: Esto significa determinar tanto las coordenadas del hipocentro como el tiempo de origen de dichos eventos sísmicos.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Asumiendo la respuesta sísmica del medio existen modelos matemáticos que nos permiten estimar por medio de un conjunto de señales registradas ante la ocurrencia de un micro sismo los parámetros del hipocentro y además, aunque de forma inestable, cararterizar el sismo modelada como una fuerza modulada en el tiempo. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%% enviar este parrafo al aspecti físico del problema a resolver
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+El presente trabajo de título en si con un doble objetivo: Por un lado el diseño algorítmico para la localización de hipocentros sísmico, tiempo de origen y caracterización las fuentes sísmicas. Por otra parte es la automatización de este proceso de estimación mediante un conjunto de implementaciones computacionales que ofrece una interfaz para que cuyas funcionalidades puedan ser empleadas en un software.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Estos modelos y alqgoritmos fueron aplicados en el contexto de la minería subterránea a partir de las mediciones sísmicas disponibles. Los datos con que se testeó el modelo y la implementación fueron obtenidos de las mediciones de sismicidad de distintas minas de explotación subterránea de la división el teniente, Codelco.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Se dividió este trabajo en los siguientes capítulos: Capítulo I (Planteamiento del problema): La teoría sísmica y la interpretación de las mediciones sismográficas suficiente para la comprensión de la problemática. Capítulo II (Marco teórico) Se analizó desde la teoría de la elasticidad cuyas ecuaciones nos permite modelar los fenómenos sísmicos para un medio elástico, homogéneo e infinito y permite deducir la función de Green la cual es esencial para el diseño del algoritmo planteado en este trabajo. Capítulo IIb: A partir de los datos de entrenamiento se diseña una red neuronal que estima el tiempo de ocurrencia de la onda 
+\begin_inset Formula $P$
+\end_inset
+
+ y la onda 
+\begin_inset Formula $S$
+\end_inset
+
+. Capítulo III: Se describe el modelos numérico para resolver el problema, basado en los resultados expuestos en el capítulo II, este capítulo describe el modelo y algoritmo matemático que permitirá la estimación del hipocentro sísmico usando toda la información de la señal de los sismogramas, esto es una innovación con respecto los actuales algoritmos que hacen una estimación del hipocentro mediante el tiempo de arribo de la onda p y s, aunque usa esta estimación como condición inicial. En esta parte de describirá el concepto de problema inverso y una técnica para aplicarlo al problema elástico. Se justificara la demanda computacional que involucra. Capítulo IV: Se describirá el algoritmo y estructura de datos que se seleccionó para resolver el problema y su versión computacional. Capítulo V: está reservado para la descripción la versión computacional actual de la solución, o sea, la implementación del método, la arquitectura de software que se idónea que según actuales autores se enmarca en el área de Big Data y Ciencia de los Datos. Capítulo VI: se describe la calidad del modelo y sus futuras aplicaciones, posibles mejoras y recomendaciones.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Anexo A están los desarrollos matemáticos para los modelos físicos considerados en este trabajo. En el Anexo B están las pruebas para sismos sintéticos.q
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+begin{scope}[blend group = soft light]
+\end_layout
+
+\begin_layout Plain Layout
+    
+\backslash
+fill[red!30!white]   ( 90:1.2) circle (2);
+\end_layout
+
+\begin_layout Plain Layout
+    
+\backslash
+fill[green!30!white] (210:1.2) circle (2);
+\end_layout
+
+\begin_layout Plain Layout
+    
+\backslash
+fill[blue!30!white]  (330:1.2) circle (2);
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+end{scope}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+node at ( 90:2)    {Typography};
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+node at ( 210:2)   {Design};
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+node at ( 330:2)   {Coding};
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+node [font=
+\backslash
+Large] {
+\backslash
+LaTeX};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+
+\lang spanish
+Justificación del tema
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Objetivos
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+General
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Formular un algoritmo basado en problemas inversos y redes neuronales para la estimación de epicentros de los microsismos captados en las operaciones mineras de El Teniente, Codelco. Basado en las mediciones sísmicas recojidas de los sismogramas dispuestos en distintas locaciones de las zonas de extracción subterranea.
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Específico
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Desarrollar un método de conversión de datos a estructuras de datos 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Elaborar un método basado en redes neuronales para determinar el tiempo de llegada de la onda P y S de un sismo para una medición sismográfica. 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Estimar por medio de los resultados anteriores una ubicación del hipocentro para un evento sísmico. 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Reconstruir la fuerza puntual que caracteriza a un microsismo mediante un método numérico basado en modelos inversos. 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Modelar computacionalmente todos los puntos anteriormente expuestos en una librería de caracter científica. 
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Justificación del tema
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang spanish
+Motivación
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Alcances y limitaciones
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Metodología y plan de trabajo
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Resultados esperados
+\end_layout
+
+\end_body
+\end_document
