@@ -12,3 +12,6 @@ notebooks/.ipynb_checkpoints/
 *.lyx~
 lyx/doc/*.lyx~
 *.bib.bak
+datasets/*
+datasets/
+
